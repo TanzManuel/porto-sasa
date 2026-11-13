@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,7 +7,7 @@
 <title>Portofolio – Saniea Monica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F2F0FF;--fg:#141233;--mut:#5d5a82;--card:#fff;--line:rgba(20,18,51,.16);--a:#FF5FA2;--t1:#FFE45C;--t2:#8CF0C8;--t3:#FF9F5C;--ink:#141233;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E0C2B;--fg:#F2F0FF;--mut:#a09cc9;--card:#1a1745;--line:rgba(242,240,255,.18)}}
@@ -18,7 +19,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 section{padding:90px 20px;max-width:1080px;margin:0 auto}
 h2{font-size:clamp(34px,6vw,60px);line-height:1;margin:0 0 28px;letter-spacing:-.03em;font-weight:800}
 p{max-width:62ch}
-.btn{font:inherit;font-weight:600;border:3px solid var(--ink);background:var(--a);color:var(--ink);padding:12px 20px;border-radius:999px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn{font:inherit;font-weight:600;border:3px solid var(--ink);background:var(--a);color:var(--ink);padding:12px 20px;border-radius:999px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
 .btn:active{transform:translate(3px,3px)!important;box-shadow:1px 1px 0 var(--ink)}
 .btn.ghost{background:var(--card);color:var(--fg);border-color:var(--fg);box-shadow:4px 4px 0 var(--fg)}
 :focus-visible{outline:3px solid var(--a);outline-offset:3px}
@@ -65,24 +66,47 @@ p{max-width:62ch}
 .bar{height:12px;border:2px solid var(--fg);border-radius:9px;margin-top:10px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:var(--a);transition:width .9s cubic-bezier(.3,1.6,.5,1)}
 .sk small{color:var(--mut)}
-/* proyek */
-#tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
-.tab{font:inherit;font-weight:600;background:none;color:var(--fg);border:2px solid var(--fg);border-radius:999px;padding:6px 16px;cursor:pointer}
-.tab.on{background:var(--fg);color:var(--bg)}
-#fnote{color:var(--mut);font-size:14px}
-#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;perspective:900px}
-.card{background:var(--card);border:3px solid var(--fg);border-radius:24px;overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:var(--fg)}
-.card .top{height:150px;display:grid;place-items:center;font-size:74px;font-weight:800;color:var(--ink);border-bottom:3px solid var(--fg)}
-.card .bd{padding:16px}.card h3{margin:0 0 4px;font-size:22px}.card p{margin:0;color:var(--mut);font-size:15px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
-.chips span{font-size:13px;border:2px solid var(--fg);border-radius:99px;padding:1px 10px}
-.card.hide{display:none}
-#modal{position:fixed;inset:0;background:rgba(10,8,40,.65);display:none;place-items:center;z-index:80;padding:20px}
-#modal.open{display:grid}
-#mbox{background:var(--card);border:3px solid var(--fg);border-radius:28px;max-width:520px;width:100%;overflow:hidden;animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
-@keyframes pop{from{transform:scale(.6) rotate(-4deg);opacity:0}}
-#mbox .top{height:160px;display:grid;place-items:center;font-size:90px;font-weight:800;color:var(--ink)}
-#mbox .bd{padding:22px}
+
+/* ============================================================
+   SINGLE INTERACTIVE PROJECT CARD -> MORPH TO LIVE WEB
+   ============================================================ */
+#single-proj-wrap{position:relative;perspective:1200px}
+.card.featured-single{width:100%;background:var(--card);border:3px solid var(--fg);border-radius:28px;overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:var(--fg);position:relative;box-shadow:8px 8px 0 var(--ink);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,opacity .3s,max-height .5s cubic-bezier(.22,1,.36,1)}
+.card.featured-single:hover{transform:translateY(-4px);box-shadow:12px 12px 0 var(--a)}
+.card.featured-single.morphed-out{opacity:0;transform:scale(.94) translateY(-16px);pointer-events:none;max-height:0;border-width:0;margin:0;box-shadow:none}
+.card.featured-single .top{height:200px;display:grid;place-items:center;font-size:88px;font-weight:800;color:var(--ink);border-bottom:3px solid var(--fg);position:relative;overflow:hidden;background:var(--t2)}
+.card.featured-single .bd{padding:22px 24px}
+.card.featured-single h3{margin:0 0 6px;font-size:clamp(22px,4vw,28px)}
+.card.featured-single p{margin:0;color:var(--mut);font-size:15.5px;max-width:75ch}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chips span{font-size:13px;font-weight:600;border:2px solid var(--fg);border-radius:99px;padding:3px 12px}
+.badge-live{position:absolute;top:14px;right:14px;background:#FFE45C;color:#141233;border:2px solid #141233;border-radius:99px;padding:4px 12px;font-size:11.5px;font-weight:800;box-shadow:2px 2px 0 #141233;letter-spacing:.02em}
+.cta-unroll{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:var(--a);color:var(--ink);border:2.5px solid var(--ink);border-radius:99px;padding:8px 16px;font-weight:800;font-size:13.5px;box-shadow:3px 3px 0 var(--ink);animation:pulseBtn 2s infinite}
+@keyframes pulseBtn{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+
+/* Stage Web Interaktif yang Menggulir Terbuka (Unroll) */
+.embed-showcase{border:3px solid var(--fg);border-radius:26px;overflow:hidden;background:var(--card);box-shadow:10px 10px 0 var(--ink);max-height:0;opacity:0;transform:translateY(-20px) scale(.97);pointer-events:none;border-width:0;transition:max-height .7s cubic-bezier(.22,1,.36,1),opacity .45s ease,transform .5s cubic-bezier(.22,1,.36,1),margin .4s ease}
+.embed-showcase.expanded{max-height:2600px;opacity:1;transform:translateY(0) scale(1);pointer-events:auto;border-width:3px;margin-top:8px}
+
+/* Top Browser Bar - Anti-Overlap di Portrait Mobile */
+.browser-bar{background:#1e1b3a;color:#fff;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:3px solid var(--fg)}
+.browser-left{display:flex;align-items:center;gap:10px;flex:1 1 200px;min-width:0}
+.browser-dots{display:flex;gap:6px;flex-shrink:0}
+.browser-dots span{width:12px;height:12px;border-radius:50%;display:inline-block;background:#FF5FA2;border:1.5px solid #000}
+.browser-dots span:nth-child(2){background:#FFE45C}
+.browser-dots span:nth-child(3){background:#8CF0C8}
+.browser-url{flex:1;min-width:0;background:#0e0c24;color:#a9f5d8;padding:6px 12px;border-radius:99px;font-family:'JetBrains Mono',monospace;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid rgba(255,255,255,.15)}
+.browser-actions{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0}
+.b-btn{background:var(--t1);color:#141233;border:2px solid #141233;border-radius:99px;padding:6px 12px;font-weight:800;font-size:11.5px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:transform .15s,background .15s}
+.b-btn:hover{background:#fff;transform:translateY(-1px)}
+.b-btn.fold{background:#8CF0C8}
+@media(max-width:560px){
+  .browser-bar{padding:10px}
+  .browser-left{flex:1 1 100%}
+  .browser-actions{width:100%;justify-content:space-between}
+  .b-btn{flex:1;text-align:center;justify-content:center}
+}
+
 /* terminal */
 #term{background:#0b0a1f;color:#d9f9e6;border:3px solid var(--fg);border-radius:20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;overflow:hidden;box-shadow:8px 8px 0 var(--a)}
 #tbar{background:#26234d;padding:8px 14px;display:flex;gap:7px}#tbar i{width:12px;height:12px;border-radius:50%;background:var(--a)}#tbar i:nth-child(2){background:var(--t1)}#tbar i:nth-child(3){background:var(--t2)}
@@ -95,20 +119,139 @@ p{max-width:62ch}
 .ct textarea{font:inherit;color:var(--fg);background:var(--card);border:3px solid var(--fg);border-radius:20px;padding:14px;min-height:120px;resize:vertical}
 .row{display:flex;gap:12px;flex-wrap:wrap}
 footer{text-align:center;padding:40px 20px 120px;color:var(--mut)}
-#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--a);color:var(--ink);border:3px solid var(--ink);border-radius:14px;padding:10px 18px;font-weight:600;opacity:0;pointer-events:none;transition:.35s;z-index:90}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--a);color:var(--ink);border:3px solid var(--ink);border-radius:14px;padding:10px 18px;font-weight:600;opacity:0;pointer-events:none;transition:.35s;z-index:120}
 #toast.show{opacity:1;transform:translate(-50%,0)}
-#fx{position:fixed;inset:0;pointer-events:none;z-index:95;width:100%;height:100%}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:125;width:100%;height:100%}
 /* kursor */
-#cd,#cr{position:fixed;left:0;top:0;pointer-events:none;z-index:99;border-radius:50%;display:none}
+#cd,#cr{position:fixed;left:0;top:0;pointer-events:none;z-index:130;border-radius:50%;display:none}
 #cd{width:8px;height:8px;background:var(--a);margin:-4px 0 0 -4px}
 #cr{width:36px;height:36px;border:2px solid var(--a);margin:-18px 0 0 -18px;transition:width .2s,height .2s,margin .2s,background .2s}
 #cr.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(255,95,162,.18)}
 @media(hover:hover) and (pointer:fine){#cd,#cr{display:block}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+
+/* Fullscreen Modal Overlay untuk Web SMAN 1 Cikidang */
+#smancik-overlay{position:fixed;inset:0;z-index:100;background:rgba(10,8,30,.88);backdrop-filter:blur(6px);display:none;flex-direction:column;padding:10px}
+#smancik-overlay.open{display:flex}
+.smancik-frame-wrap{flex:1;background:#fff;border:3px solid #141233;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;max-width:1200px;width:100%;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.smancik-viewport{flex:1;overflow-y:auto;overflow-x:hidden;background:#faf6f6;position:relative}
+
+/* ============================================================
+   DESAIN RESPONSIF WEBSITE SMAN 1 CIKIDANG (PORTRAIT & LANDSCAPE)
+   ============================================================ */
+.smc-root{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#111;background:#faf6f6;min-height:540px;position:relative;overflow-x:hidden}
+.smc-header{background:#49b69c;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(0,0,0,.08)}
+.smc-brand{display:flex;align-items:center;gap:12px;cursor:pointer;min-width:0}
+.smc-logo{width:56px;height:56px;flex-shrink:0}
+.smc-title-wrap{text-align:left;color:#fff;min-width:0}
+.smc-title{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(16px,2.5vw,24px);letter-spacing:.03em;margin:0;line-height:1.15;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+.smc-subtitle{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(11.5px,1.5vw,14.5px);margin:2px 0 0;color:#f3fffb;font-weight:600}
+
+.smc-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;width:auto}
+.smc-nav-item{position:relative}
+.smc-nav-btn{background:transparent;border:0;color:#fff;font-family:inherit;font-weight:700;font-size:13.5px;padding:8px 12px;cursor:pointer;border-radius:4px;transition:background .15s;white-space:nowrap}
+.smc-nav-btn:hover,.smc-nav-btn.active{background:#38bdf8;color:#fff}
+
+/* Dropdown Profil SMAN 1 Cikidang */
+.smc-dropdown{position:absolute;top:calc(100% + 4px);left:0;width:210px;background:#5ec5ad;border-radius:4px;box-shadow:0 10px 24px rgba(0,0,0,.22);display:none;flex-direction:column;z-index:50;overflow:hidden;border:1px solid rgba(255,255,255,.25)}
+.smc-nav-item.open .smc-dropdown{display:flex}
+@media(hover:hover){.smc-nav-item:hover .smc-dropdown{display:flex}}
+.smc-drop-btn{background:transparent;border:0;color:#fff;text-align:left;padding:11px 14px;font-family:inherit;font-size:12.5px;font-weight:700;line-height:1.35;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.14);transition:background .15s}
+.smc-drop-btn:last-child{border-bottom:0}
+.smc-drop-btn:hover,.smc-drop-btn.active{background:#7c4dff;color:#fff}
+
+@media(max-width:680px){
+  .smc-header{padding:12px 14px;gap:10px}
+  .smc-logo{width:48px;height:48px}
+  .smc-nav{width:100%;gap:4px;justify-content:flex-start}
+  .smc-nav-btn{font-size:12.5px;padding:7px 10px}
+  .smc-dropdown{left:0;right:auto;width:min(220px,82vw)}
+}
+
+/* Halaman Beranda (Teal) */
+.smc-page{display:none;animation:smcFade .25s ease}
+.smc-page.active{display:block}
+@keyframes smcFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.smc-beranda{background:#49b69c;min-height:500px;padding:20px 24px 36px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
+@media(max-width:820px){
+  .smc-beranda{grid-template-columns:1fr;padding:16px 14px 28px;gap:18px}
+}
+
+/* Banner In House Training Panca Waluya - Rapi di Portrait & Landscape */
+.iht-banner{background:linear-gradient(135deg,#1e4d2b 0%,#2d6a3e 50%,#1b4326 100%);border-radius:8px;position:relative;overflow:hidden;border:2px solid rgba(255,255,255,.28);box-shadow:0 10px 25px rgba(0,0,0,.22);display:flex;flex-direction:column;justify-content:space-between;padding:16px;color:#fff;gap:12px}
+.iht-gunungan-l,.iht-gunungan-r{position:absolute;bottom:0;width:120px;height:180px;opacity:.22;pointer-events:none}
+.iht-gunungan-l{left:-12px}
+.iht-gunungan-r{right:-12px;transform:scaleX(-1)}
+.iht-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:relative;z-index:2;font-size:10px;font-weight:700}
+.iht-badges{display:inline-flex;flex-wrap:wrap;gap:5px;align-items:center;background:rgba(255,255,255,.92);color:#143d22;padding:4px 10px;border-radius:99px;font-size:9.5px}
+.iht-center{text-align:center;position:relative;z-index:2;margin:4px auto;max-width:380px;padding:0 4px}
+.iht-script{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,2.5vw,21px);color:#dfffe8;margin:0}
+.iht-main-title{font-size:clamp(18px,3.2vw,28px);font-weight:800;letter-spacing:.03em;line-height:1.12;margin:4px 0;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.4)}
+.iht-quote{font-size:clamp(10.5px,1.8vw,12px);line-height:1.4;color:#e0f7e6;margin:6px 0}
+.iht-date{display:inline-block;background:rgba(0,0,0,.4);padding:4px 12px;border-radius:99px;font-size:10px;font-weight:700;color:#ffe45c;margin-top:4px}
+
+.iht-speakers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:end;position:relative;z-index:2;margin-top:4px}
+.spk-card{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.spk-card svg{width:58px;height:62px;display:block;flex-shrink:0}
+.spk-name{background:#143d22;color:#fff;padding:4px 6px;border-radius:4px;border:1px solid #8cf0c8;font-weight:700;font-size:8.5px;line-height:1.2;margin-top:-6px;position:relative;z-index:2;width:100%;word-break:break-word}
+.spk-name span{display:block;font-size:7.5px;font-weight:400;color:#cfead9;margin-top:1px}
+@media(max-width:420px){
+  .iht-banner{padding:12px}
+  .spk-card svg{width:48px;height:52px}
+  .spk-name{font-size:7.8px;padding:3px 4px}
+}
+
+/* Kartu Kepala Sekolah di Beranda */
+.kepsek-card{background:#359c85;padding:24px 18px 30px;border-radius:8px;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.kepsek-figure{width:185px;height:230px;margin-bottom:12px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25))}
+.kepsek-role{font-weight:800;font-size:clamp(15px,2.2vw,17px);letter-spacing:.04em;line-height:1.3;margin:0;text-transform:uppercase}
+.kepsek-name{color:#d4e137;font-weight:800;font-size:clamp(13.5px,2vw,15px);margin:6px 0 0}
+
+/* Halaman Konten Putih/Off-white - Rapi di Portrait */
+.smc-content-box{background:#faf6f6;padding:28px 32px 48px;min-height:480px;color:#111;overflow-wrap:break-word}
+@media(max-width:680px){.smc-content-box{padding:20px 16px 38px}}
+.smc-h1{font-size:clamp(20px,3.5vw,28px);font-weight:800;margin:0 0 18px;color:#000;line-height:1.25}
+.smc-sambutan p{font-size:13.5px;font-weight:600;line-height:1.7;margin:0 0 14px;max-width:820px;color:#1a1a1a}
+.smc-visimisi{color:#111}
+.smc-visimisi-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;border-bottom:2px solid rgba(0,0,0,.08);padding-bottom:8px}
+.smc-visimisi h3{font-size:clamp(18px,3vw,22px);margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800}
+.smc-visi-center{text-align:center;font-weight:800;font-size:clamp(12.5px,2vw,14px);line-height:1.55;margin:14px 0 20px;padding:12px 14px;background:#eef8f6;border-left:4px solid #49b69c;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif}
+.smc-list{list-style:none;padding:0;margin:0 0 22px;font-size:12.5px;line-height:1.75;display:flex;flex-direction:column;gap:6px}
+.smc-list li{padding-left:4px}
+.smc-list.upper{text-transform:uppercase;font-weight:600}
+
+/* Halaman Pendidik & Tenaga Kependidikan */
+.ptk-banner-yellow{background:#f3a81e;color:#fff;text-align:center;font-weight:800;font-size:13px;padding:8px 12px;border-radius:6px;margin:0 0 18px}
+.ptk-banner-teal{background:#49a591;color:#fff;text-align:center;font-weight:800;font-size:13px;padding:8px 12px;border-radius:6px;margin:26px 0 18px}
+.ptk-grid-5{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;max-width:920px;margin:0 auto}
+.ptk-grid-6{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:14px;max-width:920px;margin:0 auto}
+.ptk-photo{background:#e60000;aspect-ratio:3/4;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,.12);position:relative}
+.ptk-photo svg{width:100%;height:100%;display:block}
+.ptk-caption{font-size:11px;font-weight:700;text-align:center;margin-top:6px;color:#222;line-height:1.3}
+
+/* Halaman Sarpras & Ekskul Grid 2x2 */
+.photo-grid-2x2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:860px;margin:16px auto 0}
+@media(max-width:640px){.photo-grid-2x2{grid-template-columns:1fr;gap:16px}}
+.media-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.09);border:1px solid rgba(0,0,0,.08)}
+.media-card svg{width:100%;height:auto;display:block}
+.media-label{padding:10px 12px;font-size:12.5px;font-weight:700;color:#222;background:#fff;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* Halaman Pusat Download - Rapi di Portrait */
+.dl-list{display:flex;flex-direction:column;gap:16px;margin-top:20px;max-width:680px}
+.dl-row{display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:16px;background:#fff;padding:12px 16px;border-radius:8px;border:1px solid rgba(0,0,0,.08);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+@media(max-width:540px){
+  .dl-row{grid-template-columns:60px 1fr;gap:12px}
+  .dl-btn{grid-column:1 / -1;width:100%;text-align:center}
+}
+.dl-title{font-size:12.5px;font-weight:800;text-decoration:underline;color:#111;letter-spacing:.02em;line-height:1.35}
+.dl-btn{background:#4fc3f7;color:#fff;border:0;padding:9px 22px;font-weight:800;font-size:12.5px;border-radius:4px;cursor:pointer;transition:transform .15s,background .15s}
+.dl-btn:hover{background:#29b6f6;transform:translateY(-1px)}
 </style>
 </head>
 <body>
 <div id="prog"></div><div id="cd"></div><div id="cr"></div><canvas id="fx"></canvas><div id="toast"></div>
+
 <div id="tools" aria-label="Pengaturan tampilan">
 <button class="sw" data-c="#FF5FA2" style="background:#FF5FA2" aria-label="Aksen pink"></button>
 <button class="sw" data-c="#5C7CFF" style="background:#5C7CFF" aria-label="Aksen biru"></button>
@@ -116,6 +259,7 @@ footer{text-align:center;padding:40px 20px 120px;color:var(--mut)}
 <button class="sw" data-c="#FF9F1C" style="background:#FF9F1C" aria-label="Aksen oranye"></button>
 <button id="mode" aria-label="Ganti mode terang atau gelap">◐</button>
 </div>
+
 <nav id="dock">
 <a href="#home" class="on">Beranda</a><a href="#tentang">Tentang</a><a href="#keahlian">Keahlian</a><a href="#proyek">Proyek</a><a href="#terminal">Terminal</a><a href="#kontak">Kontak</a>
 </nav>
@@ -135,7 +279,7 @@ footer{text-align:center;padding:40px 20px 120px;color:var(--mut)}
 <div class="about">
 <div class="id tilt" data-t="8"><div class="av">SM</div><h3>Saniea Monica</h3><span>Developer &amp; desainer, Indonesia</span></div>
 <div>
-<p>Ganti teks ini dengan ceritamu: siapa kamu, apa yang kamu kerjakan, dan hal apa yang membuatmu bersemangat. Tulis singkat, jelas, dan jujur.</p>
+<p>Halo! Aku Saniea Monica, seorang pengembang web dan desainer antarmuka yang senang merancang website sekolah, aplikasi interaktif, dan identitas visual yang ramah pengguna. Salah satu karya utamaku adalah <b>Website Resmi SMAN 1 Cikidang (Sekolah Berbudaya Lingkungan)</b> yang bisa kamu coba langsung di bagian Proyek di bawah!</p>
 <div class="nums">
 <div><b data-n="32">0</b><small>proyek selesai</small></div>
 <div><b data-n="4">0</b><small>tahun pengalaman</small></div>
@@ -147,14 +291,54 @@ footer{text-align:center;padding:40px 20px 120px;color:var(--mut)}
 
 <section id="keahlian">
 <h2>Keahlian</h2>
-<p style="margin-top:-12px;color:var(--mut)">Klik satu keahlian untuk melihat proyek yang memakainya.</p>
+<p style="margin-top:-12px;color:var(--mut)">Klik satu keahlian untuk langsung membuka karya interaktif yang memakainya.</p>
 <div id="skills"></div>
 </section>
 
 <section id="proyek">
-<h2>Proyek</h2>
-<div id="tabs"></div>
-<div id="grid"></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin-bottom:18px">
+  <div>
+    <h2 style="margin:0">Proyek Unggulan</h2>
+    <p style="margin:6px 0 0;color:var(--mut);font-size:15px">Klik kartu di bawah untuk membuka langsung simulasi website interaktif.</p>
+  </div>
+</div>
+
+<div id="single-proj-wrap">
+  <!-- Satu-satunya Card Proyek (Klik untuk Berubah / Gulir menjadi Web SMAN 1 Cikidang) -->
+  <button class="card featured-single tilt" id="single-card" data-t="6" aria-expanded="false">
+    <div class="top">
+      🏫
+      <span class="badge-live">✨ WEB INTERAKTIF</span>
+    </div>
+    <div class="bd">
+      <h3>Website SMAN 1 Cikidang</h3>
+      <p>Website resmi SMAN 1 Cikidang (Sekolah Berbudaya Lingkungan) lengkap dengan Profil, Visi Misi, PTK, Sarpras, Ekskul &amp; Pusat Download.</p>
+      <div class="chips">
+        <span>HTML &amp; CSS</span>
+        <span>JavaScript</span>
+        <span>UI Design</span>
+      </div>
+      <div class="cta-unroll">🚀 Klik Card untuk Membuka Simulasi Web ▾</div>
+    </div>
+  </button>
+
+  <!-- Pratinjau Langsung Website SMAN 1 Cikidang yang Muncul saat Card Diklik -->
+  <div class="embed-showcase" id="smancik-embed-section">
+    <div class="browser-bar">
+      <div class="browser-left">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url" title="URL Simulasi SMAN 1 Cikidang">
+          🔒 https://sman1cikidang.sch.id/<span id="embed-url-path">beranda</span>
+        </div>
+      </div>
+      <div class="browser-actions">
+        <button class="b-btn fold" id="foldSmancikBtn" type="button">🔼 Lipat ke Card</button>
+        <button class="b-btn" id="expandFullBtn" type="button">⛶ Perbesar Layar Penuh</button>
+      </div>
+    </div>
+    <div id="smancik-inline-mount"></div>
+  </div>
+</div>
 </section>
 
 <section id="terminal">
@@ -176,23 +360,520 @@ footer{text-align:center;padding:40px 20px 120px;color:var(--mut)}
 </div>
 </div>
 </section>
-<footer>Dibuat dengan tangan sendiri. Coba ketik <b>party</b> di terminal.</footer>
+<footer>Dibuat dengan tangan sendiri oleh Saniea Monica. Coba ketik <b>smancik</b> atau <b>party</b> di terminal.</footer>
 
-<div id="modal" role="dialog" aria-modal="true"><div id="mbox"></div></div>
+<!-- Modal Fullscreen Website SMAN 1 Cikidang -->
+<div id="smancik-overlay" role="dialog" aria-modal="true" aria-label="Website SMAN 1 Cikidang">
+  <div class="smancik-frame-wrap">
+    <div class="browser-bar">
+      <div class="browser-left">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">
+          🔒 https://sman1cikidang.sch.id/<span id="modal-url-path">beranda</span>
+        </div>
+      </div>
+      <div class="browser-actions">
+        <button class="b-btn" style="background:#FF5FA2;color:#fff" onclick="closeSmancikFullscreen()" type="button">✕ Kembali ke Portofolio</button>
+      </div>
+    </div>
+    <div class="smancik-viewport" id="smancik-modal-mount"></div>
+  </div>
+</div>
+
+<!-- TEMPLATE WEBSITE SMAN 1 CIKIDANG -->
+<template id="smancik-template">
+  <div class="smc-root">
+    <!-- Header Navigasi SMAN 1 Cikidang -->
+    <header class="smc-header">
+      <div class="smc-brand" data-go="beranda">
+        <!-- Logo SMAN 1 Cikidang -->
+        <svg class="smc-logo" viewBox="0 0 120 120">
+          <polygon points="60,6 108,28 96,94 60,112 24,94 12,28" fill="#1b8a3d" stroke="#fff" stroke-width="3"/>
+          <circle cx="60" cy="58" r="36" fill="#ffd600" stroke="#111" stroke-width="2.5"/>
+          <path d="M44,68 L76,68 L72,82 L48,82 Z" fill="#e65100"/>
+          <rect x="47" y="45" width="26" height="18" rx="2" fill="#fff" stroke="#111" stroke-width="1.8"/>
+          <line x1="60" y1="45" x2="60" y2="63" stroke="#111" stroke-width="1.8"/>
+          <circle cx="60" cy="34" r="6" fill="#ff3d00"/>
+          <path d="M18,98 Q60,112 102,98 L106,106 Q60,120 14,106 Z" fill="#fff" stroke="#1b8a3d" stroke-width="1.5"/>
+          <text x="60" y="24" text-anchor="middle" fill="#111" font-size="6.5" font-weight="900">SMAN 1 CIKIDANG</text>
+          <text x="60" y="106" text-anchor="middle" fill="#111" font-size="6" font-weight="800">SUKABUMI</text>
+        </svg>
+        <div class="smc-title-wrap">
+          <h1 class="smc-title">SMAN 1 CIKIDANG</h1>
+          <p class="smc-subtitle">sekolah berbudaya lingkungan</p>
+        </div>
+      </div>
+
+      <nav class="smc-nav">
+        <div class="smc-nav-item">
+          <button class="smc-nav-btn active" data-nav="beranda" type="button">Beranda</button>
+        </div>
+        <div class="smc-nav-item has-drop">
+          <button class="smc-nav-btn" data-nav="profil" type="button">Profil ▾</button>
+          <div class="smc-dropdown">
+            <button class="smc-drop-btn" data-go="sambutan" type="button">sambutan kepala sekolah</button>
+            <button class="smc-drop-btn" data-go="visimisi" type="button">visi dan misi</button>
+            <button class="smc-drop-btn" data-go="sejarah" type="button">Sejarah SMAN 1 Cikidang</button>
+            <button class="smc-drop-btn" data-go="ptk" type="button">Pendidik dan Tenaga Kependidikan</button>
+            <button class="smc-drop-btn" data-go="kepsek" type="button">Kepala Sekolah</button>
+          </div>
+        </div>
+        <div class="smc-nav-item">
+          <button class="smc-nav-btn" data-nav="sarpras" data-go="sarpras" type="button">Sarpras</button>
+        </div>
+        <div class="smc-nav-item">
+          <button class="smc-nav-btn" data-nav="ekskul" data-go="ekskul" type="button">Ekskul</button>
+        </div>
+        <div class="smc-nav-item">
+          <button class="smc-nav-btn" data-nav="download" data-go="download" type="button">Pusat Download</button>
+        </div>
+        <div class="smc-nav-item">
+          <button class="smc-nav-btn" data-nav="portal" data-go="portal" type="button">Portal Digital</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 1. HALAMAN BERANDA -->
+    <div class="smc-page active" data-page="beranda">
+      <div class="smc-beranda">
+        <!-- Banner In House Training Panca Waluya -->
+        <div class="iht-banner">
+          <svg class="iht-gunungan-l" viewBox="0 0 100 160">
+            <path d="M50,5 C80,55 95,95 95,155 L5,155 C5,95 20,55 50,5 Z" fill="#a3d9a5" stroke="#fff" stroke-width="2"/>
+            <path d="M50,25 C70,65 80,95 80,145 L20,145 C20,95 30,65 50,25 Z" fill="none" stroke="#1e4d2b" stroke-width="3" stroke-dasharray="4 3"/>
+            <circle cx="50" cy="95" r="18" fill="none" stroke="#1e4d2b" stroke-width="3"/>
+          </svg>
+          <svg class="iht-gunungan-r" viewBox="0 0 100 160">
+            <path d="M50,5 C80,55 95,95 95,155 L5,155 C5,95 20,55 50,5 Z" fill="#a3d9a5" stroke="#fff" stroke-width="2"/>
+            <path d="M50,25 C70,65 80,95 80,145 L20,145 C20,95 30,65 50,25 Z" fill="none" stroke="#1e4d2b" stroke-width="3" stroke-dasharray="4 3"/>
+            <circle cx="50" cy="95" r="18" fill="none" stroke="#1e4d2b" stroke-width="3"/>
+          </svg>
+
+          <div class="iht-top">
+            <div class="iht-badges">
+              <span>🛡️ Pemprov Jabar</span> • <span>🎓 Disdik</span> • <span>🌿 SMAN 1 Cikidang</span>
+            </div>
+            <div style="color:#ffe45c">✨ SMANCIK MENCORANG</div>
+          </div>
+
+          <div class="iht-center">
+            <p class="iht-script">In House Training</p>
+            <div class="iht-main-title">PANCA WALUYA<br>SMAN 1 CIKIDANG</div>
+            <p class="iht-quote">"Ngawangun Budaya Sakola<br>dumasar tina ajen Panca Waluya"</p>
+            <span class="iht-date">11-12 DESEMBER 2025</span>
+          </div>
+
+          <div class="iht-speakers">
+            <div class="spk-card">
+              <svg viewBox="0 0 70 75">
+                <circle cx="35" cy="26" r="16" fill="#d94f4f"/>
+                <circle cx="35" cy="27" r="12" fill="#f5cfa6"/>
+                <path d="M23,20 Q35,12 47,20" fill="#c93b3b"/>
+                <rect x="26" y="23" width="7" height="4" rx="1" fill="none" stroke="#222" stroke-width="1.2"/>
+                <rect x="37" y="23" width="7" height="4" rx="1" fill="none" stroke="#222" stroke-width="1.2"/>
+                <path d="M14,74 C14,48 56,48 56,74 Z" fill="#3a4f41"/>
+                <path d="M22,46 L35,64 L48,46" fill="#d94f4f"/>
+              </svg>
+              <div class="spk-name">Dr. Hj. Nenden R., M.Pd<span>Narasumber</span></div>
+            </div>
+            <div class="spk-card">
+              <svg viewBox="0 0 70 75">
+                <circle cx="35" cy="26" r="16" fill="#e6d2cc"/>
+                <circle cx="35" cy="27" r="12" fill="#f7d5b1"/>
+                <path d="M15,74 C15,48 55,48 55,74 Z" fill="#f0dfe0"/>
+                <path d="M33,52 L35,44 L37,52 L35,64 Z" fill="#d8b8b8"/>
+              </svg>
+              <div class="spk-name">Pengawas Pembina<span>KCD Wilayah V</span></div>
+            </div>
+            <div class="spk-card">
+              <svg viewBox="0 0 70 75">
+                <circle cx="35" cy="26" r="16" fill="#2b2b2b"/>
+                <circle cx="35" cy="27" r="12" fill="#f5cfa6"/>
+                <path d="M14,74 C14,48 56,48 56,74 Z" fill="#1f1f1f"/>
+                <path d="M32,52 L35,43 L38,52 L35,64 Z" fill="#f5cfa6"/>
+              </svg>
+              <div class="spk-name">Dewi Tetra H., M.Pd<span>Kepala Sekolah</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu Kepala Sekolah Kanan -->
+        <div class="kepsek-card">
+          <svg class="kepsek-figure" viewBox="0 0 200 250">
+            <path d="M68,165 L132,165 L136,245 L64,245 Z" fill="#7c5333"/>
+            <path d="M56,92 C56,82 144,82 144,92 L148,175 L52,175 Z" fill="#8d5e3a"/>
+            <path d="M56,105 L28,96 L24,58 L42,56 L46,85 L62,92 Z" fill="#8d5e3a"/>
+            <circle cx="33" cy="50" r="10" fill="#f7d2b4"/>
+            <path d="M144,96 L156,155 L140,158 L134,110 Z" fill="#8d5e3a"/>
+            <circle cx="148" cy="164" r="8" fill="#f7d2b4"/>
+            <path d="M68,42 C68,12 132,12 132,42 L140,96 C115,118 85,128 65,142 L60,90 Z" fill="#d9b438"/>
+            <ellipse cx="100" cy="48" rx="19" ry="23" fill="#f9d5b8"/>
+            <path d="M81,40 Q100,22 119,40" fill="none" stroke="#c59f24" stroke-width="5"/>
+            <path d="M90,42 Q94,39 97,42" stroke="#332211" stroke-width="1.8" fill="none"/>
+            <path d="M103,42 Q106,39 110,42" stroke="#332211" stroke-width="1.8" fill="none"/>
+            <circle cx="93.5" cy="46" r="2" fill="#222"/>
+            <circle cx="106.5" cy="46" r="2" fill="#222"/>
+            <path d="M94,57 Q100,62 106,57" stroke="#c24d4d" stroke-width="2.2" fill="none"/>
+            <rect x="112" y="102" width="16" height="5" rx="1" fill="#222"/>
+            <circle cx="84" cy="96" r="4" fill="#ffd700"/>
+          </svg>
+          <p class="kepsek-role">KEPALA<br>SMA NEGERI 1 CIKIDANG</p>
+          <p class="kepsek-name">Dewi Tetra Hazizah, S.Pd.,M.Pd</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. HALAMAN PROFIL -> SAMBUTAN KEPALA SEKOLAH -->
+    <div class="smc-page" data-page="sambutan">
+      <div class="smc-content-box smc-sambutan">
+        <h2 class="smc-h1">Sambutan Kepala Sekolah</h2>
+        <p>Assalamu'alaikum wr.wb</p>
+        <p>Alhamdulillah wasyukurillah SMAN 1 Cikidang pada awal bulan ini telah meluncurkan Website Resmi SMAN 1 Cikidang, mudah-mudahan dengan adanya website resmi SMAN 1 Cikidang ini dapat memberi manfaat bagi seluruh siswa-siswi, guru, staf administrasi, alumni dan pihak-pihak yang memerlukannya, sehingga semua informasi mengenai sekolah dan lain-lain dapat diakses dengan cepat oleh keluarga besar SMAN 1 Cikidang yang tercinta ini, dan mudah-mudahan kedepannya website ini inshaallah akan memiliki fitur yang mempermudah dalam pembelajaran online guna menyongsong era digital dan ANBK.</p>
+        <p>Terimakasih kami ucapkan kepada seluruh pihak yang mensupport kemajuan SMAN 1 Cikidang baik dalam sarana prasarana dan lain sebagainya guna menciptakan lulusan-lulusan yang siap bersaing di perguruan-perguruan tinggi negeri/swasta ataupun di perusahaan-perusahaan dalam dan luar negeri.</p>
+        <p style="margin-top:24px">Cikidang<br>Kepala Sekolah</p>
+        <p style="margin-top:16px;font-weight:800">Hj Dian Rosdiana, M.Pd</p>
+      </div>
+    </div>
+
+    <!-- 3. HALAMAN PROFIL -> VISI DAN MISI -->
+    <div class="smc-page" data-page="visimisi">
+      <div class="smc-content-box smc-visimisi">
+        <div class="smc-visimisi-head">
+          <h3>Visi dan Misi</h3>
+          <span style="font-weight:800;font-size:13px;color:#359c85">VISI &amp; MISI SMAN 1 CIKIDANG</span>
+        </div>
+        <div class="smc-visi-center">
+          "TERWUJUDNYA PESERTA DIDIK (WARGA SEKOLAH) YANG BERKARAKTER, BERPRESTASI, DAN BERWAWASAN LINGKUNGAN"
+        </div>
+        <ul class="smc-list upper">
+          <li>1. MENANAMKAN PENDIDIKAN KARAKTER DALAM BERBAGAI KEGIATAN SEKOLAH</li>
+          <li>2. MENGOPTIMALKAN PROSES KEGIATAN BELAJAR MENGAJAR DAN BIMBINGAN</li>
+          <li>3. MENGEMBANGKAN BIDANG ILMU PENGETAHUAN DAN TEKNOLOGI BERDASARKAN MINAT, BAKAT DAN POTENSI PESERTA DIDIK MELALUI LITERASI</li>
+          <li>4. MEMBINA KEMANDIRIAN MELALUI KEGIATAN PEMBIASAAN, KEWIRAUSAHAAN, DAN PENGEMBANGAN DIRI</li>
+          <li>5. MENJALIN KOMUNIKASI YANG HARMONIS, KEKELUARGAAN ANTAR WARGA SEKOLAH DAN LEMBAGA TERKAIT</li>
+        </ul>
+
+        <h3 style="margin:22px 0 10px">Tujuan</h3>
+        <ul class="smc-list">
+          <li>1. Warga Sekolah terbiasa untuk melakukan shalat berjamaah.</li>
+          <li>2. Siswa mampu membaca Al-Qur'an dengan membiasakan tadarus Al-Qur'an di awal pembelajaran.</li>
+          <li>3. Meningkatkan ketertiban dengan mentaati peraturan sekolah.</li>
+          <li>4. Menanamkan nilai-nilai karakter bangsa dalam setiap kegiatan sekolah.</li>
+          <li>5. Membiasakan siswa untuk melakukan literasi di berbagai kesempatan di lingkungan sekolah.</li>
+          <li>6. Menghasilkan lulusan yang unggul dan kompetitif serta mampu diterima di Perguruan Tinggi Negeri.</li>
+          <li>7. Meraih kejuaraan dalam berbagai kegiatan lomba FLS2N dan O2SN, tingkat Kabupaten maupun Provinsi.</li>
+          <li>8. Terpenuhinya 8 Standar Nasional Pendidikan.</li>
+          <li>9. Optimalisasi pemanfaatan sarana prasarana yang ada di lingkungan sekolah.</li>
+          <li>10. Memberikan pelayanan yang baik kepada peserta didik, orang tua, wali siswa, alumni dan instansi atau lembaga terkait.</li>
+          <li>11. Terciptanya sekolah yang berwawasan lingkungan.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. HALAMAN PROFIL -> SEJARAH SMAN 1 CIKIDANG -->
+    <div class="smc-page" data-page="sejarah">
+      <div class="smc-content-box">
+        <h2 class="smc-h1">Sejarah SMAN 1 Cikidang</h2>
+        <p style="font-size:14px;line-height:1.75;color:#222;max-width:820px">
+          <b>SMA Negeri 1 Cikidang</b> didirikan sebagai wujud komitmen pemerataan pendidikan menengah atas berkualitas di kawasan Cikidang, Kabupaten Sukabumi, Jawa Barat. Sejak awal berdirinya, SMAN 1 Cikidang terus berkembang menjadi sekolah unggulan yang mengedepankan pembentukan karakter, prestasi akademik maupun non-akademik, serta kepedulian terhadap kelestarian alam.
+        </p>
+        <p style="font-size:14px;line-height:1.75;color:#222;max-width:820px">
+          Dengan mengusung semboyan <i>"Sekolah Berbudaya Lingkungan"</i> (Program Adiwiyata) serta penguatan budaya sekolah berbasis nilai luhur <b>Panca Waluya</b>, SMAN 1 Cikidang aktif membina generasi muda agar siap melanjutkan pendidikan ke Perguruan Tinggi Negeri/Swasta maupun bersaing di dunia kerja global.
+        </p>
+      </div>
+    </div>
+
+    <!-- 5. HALAMAN PROFIL -> PENDIDIK DAN TENAGA KEPENDIDIKAN -->
+    <div class="smc-page" data-page="ptk">
+      <div class="smc-content-box" style="padding-top:18px">
+        <div style="text-align:center;font-weight:800;color:#4fc3f7;font-size:15px;margin-bottom:10px">
+          Guru &amp; Tenaga Kependidikan<br>SMAN 1 CIKIDANG
+        </div>
+        <div class="ptk-banner-yellow">Tenaga Pendidik</div>
+        <div class="ptk-grid-5" id="guru-grid"></div>
+
+        <div class="ptk-banner-teal">Tenaga Kependidikan</div>
+        <div class="ptk-grid-6" id="tendik-grid"></div>
+      </div>
+    </div>
+
+    <!-- 6. HALAMAN PROFIL -> KEPALA SEKOLAH -->
+    <div class="smc-page" data-page="kepsek">
+      <div class="smc-content-box">
+        <h2 class="smc-h1" style="font-size:32px;margin-bottom:12px">Kepala Sekolah</h2>
+        <div style="max-width:340px;margin:0 auto;text-align:center">
+          <div style="background:#d8d2c9;border-radius:2px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.12)">
+            <svg viewBox="0 0 260 330" style="width:100%;display:block">
+              <rect width="260" height="330" fill="#e5dfd5"/>
+              <rect x="0" y="0" width="95" height="330" fill="#6b584c"/>
+              <rect x="195" y="0" width="65" height="330" fill="#c7bfb3"/>
+              <!-- Busana Hijau Olive & Hijab Bermotif -->
+              <path d="M55,210 C55,180 205,180 205,210 L215,330 L45,330 Z" fill="#a8ad5c"/>
+              <!-- Hijab Motif Floral Lembut -->
+              <path d="M75,85 C75,38 185,38 185,85 L198,215 C165,245 125,245 70,215 Z" fill="#d8cf9e"/>
+              <path d="M72,82 C75,38 185,38 188,82" fill="none" stroke="#8c7a5b" stroke-width="6"/>
+              <!-- Wajah Tersenyum -->
+              <ellipse cx="130" cy="105" rx="34" ry="40" fill="#f5cab0"/>
+              <path d="M110,95 Q118,90 124,95" stroke="#3b2618" stroke-width="2.5" fill="none"/>
+              <path d="M136,95 Q142,90 150,95" stroke="#3b2618" stroke-width="2.5" fill="none"/>
+              <circle cx="117" cy="102" r="3" fill="#222"/>
+              <circle cx="143" cy="102" r="3" fill="#222"/>
+              <path d="M117,120 Q130,132 143,120 Z" fill="#fff" stroke="#b84a4a" stroke-width="2"/>
+              <!-- Tangan Bersedekap -->
+              <path d="M62,245 L188,235 L192,275 L65,280 Z" fill="#9ca14f" stroke="#858a3e" stroke-width="2"/>
+              <ellipse cx="172" cy="240" rx="14" ry="9" fill="#f5cab0"/>
+            </svg>
+          </div>
+          <div style="color:#4eb5e6;font-weight:800;font-size:19px;margin-top:12px">
+            Dewi Tetra Hazizah, S.Pd.,M.Pd
+          </div>
+          <div style="color:#444;font-weight:700;font-size:12.5px;margin-top:3px">
+            2025 s.d Sekarang
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. HALAMAN SARPRAS -->
+    <div class="smc-page" data-page="sarpras">
+      <div class="smc-content-box">
+        <h2 class="smc-h1" style="font-size:28px">sarana dan prasarana</h2>
+        <div class="photo-grid-2x2">
+          <!-- 1. Lapangan Utama & Taman -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="120" fill="#cfd8dc"/>
+              <ellipse cx="110" cy="40" rx="70" ry="25" fill="#eceff1"/>
+              <rect y="110" width="400" height="120" fill="#558b2f"/>
+              <path d="M40,230 L160,130 L340,130 L390,230 Z" fill="#7cb342" opacity=".7"/>
+              <rect x="130" y="92" width="110" height="28" fill="#e0e0e0"/>
+              <polygon points="125,92 185,72 245,92" fill="#546e7a"/>
+              <circle cx="40" cy="95" r="45" fill="#2e7d32"/>
+              <circle cx="355" cy="95" r="38" fill="#33691e"/>
+            </svg>
+            <div class="media-label"><span>🌿 Lapangan Upacara &amp; Area Hijau</span><span>Adiwiyata</span></div>
+          </div>
+          <!-- 2. Lapangan Olahraga Biru -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="110" fill="#b0bec5"/>
+              <rect y="100" width="400" height="130" fill="#4caf50"/>
+              <polygon points="45,230 140,115 310,115 365,230" fill="#1e88e5" stroke="#fff" stroke-width="3"/>
+              <line x1="92" y1="172" x2="338" y2="172" stroke="#fff" stroke-width="2"/>
+              <circle cx="35" cy="85" r="50" fill="#2e7d32"/>
+              <rect x="315" y="75" width="40" height="55" fill="none" stroke="#333" stroke-width="3"/>
+            </svg>
+            <div class="media-label"><span>🏀 Lapangan Futsal &amp; Basket Outdoor</span><span>Olahraga</span></div>
+          </div>
+          <!-- 3. Lab Komputer -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="230" fill="#d4c639"/>
+              <polygon points="0,230 140,120 320,120 400,230" fill="#bcaaa4"/>
+              <rect x="55" y="30" width="60" height="50" fill="#e0f7fa" stroke="#5d4037" stroke-width="3"/>
+              <rect x="145" y="30" width="55" height="45" fill="#e0f7fa" stroke="#5d4037" stroke-width="3"/>
+              <!-- Meja & Monitor Komputer -->
+              <polygon points="90,210 260,115 310,115 160,210" fill="#d87a22"/>
+              <rect x="135" y="135" width="38" height="28" fill="#212121" stroke="#fff" stroke-width="2"/>
+              <rect x="175" y="115" width="32" height="24" fill="#212121" stroke="#fff" stroke-width="2"/>
+              <rect x="210" y="100" width="28" height="20" fill="#212121" stroke="#fff" stroke-width="2"/>
+              <polygon points="105,150 145,165 145,215 105,200" fill="#111"/>
+            </svg>
+            <div class="media-label"><span>💻 Laboratorium Komputer &amp; ANBK</span><span>TIK</span></div>
+          </div>
+          <!-- 4. Gedung Ruang Kelas -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="230" fill="#81c784"/>
+              <polygon points="20,115 110,45 290,45 240,115" fill="#5d4037" stroke="#3e2723" stroke-width="2"/>
+              <polygon points="230,115 320,40 395,115" fill="#4e342e" stroke="#fff" stroke-width="2"/>
+              <rect x="35" y="115" width="345" height="75" fill="#f5f5dc"/>
+              <rect x="65" y="128" width="45" height="35" fill="#263238"/>
+              <rect x="135" y="128" width="45" height="35" fill="#263238"/>
+              <rect x="205" y="128" width="45" height="35" fill="#263238"/>
+              <rect x="285" y="128" width="45" height="35" fill="#263238"/>
+              <rect y="185" width="400" height="45" fill="#33691e"/>
+            </svg>
+            <div class="media-label"><span>🏫 Gedung Ruang Belajar SMAN 1 Cikidang</span><span>RKB</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. HALAMAN EKSKUL -->
+    <div class="smc-page" data-page="ekskul">
+      <div class="smc-content-box">
+        <h2 class="smc-h1" style="font-size:28px">Ekskul</h2>
+        <div class="photo-grid-2x2">
+          <!-- 1. Paskibra -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="115" fill="#2e5736"/>
+              <rect y="115" width="400" height="115" fill="#c8b6a6"/>
+              <!-- Barisan Paskibra -->
+              <g transform="translate(45,95)">
+                <rect x="0" y="25" width="12" height="45" fill="#b71c1c"/>
+                <circle cx="6" cy="16" r="7" fill="#f5cfa6"/>
+              </g>
+              <g transform="translate(135,92)">
+                <rect x="0" y="20" width="14" height="30" fill="#880e4f"/><rect x="0" y="50" width="14" height="28" fill="#fff"/>
+                <rect x="28" y="20" width="14" height="30" fill="#880e4f"/><rect x="28" y="50" width="14" height="28" fill="#fff"/>
+                <rect x="56" y="20" width="14" height="30" fill="#880e4f"/><rect x="56" y="50" width="14" height="28" fill="#fff"/>
+                <rect x="84" y="20" width="14" height="30" fill="#880e4f"/><rect x="84" y="50" width="14" height="28" fill="#fff"/>
+                <rect x="112" y="20" width="14" height="30" fill="#880e4f"/><rect x="112" y="50" width="14" height="28" fill="#fff"/>
+              </g>
+            </svg>
+            <div class="media-label"><span>🇮🇩 Paskibra &amp; Pramuka</span><span>Kepemimpinan</span></div>
+          </div>
+          <!-- 2. Seni Tari -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="230" fill="#111"/>
+              <rect x="40" y="20" width="320" height="190" fill="#795548"/>
+              <path d="M135,210 L165,105 L235,105 L265,210 Z" fill="#d1d9ff"/>
+              <polygon points="165,105 200,150 235,105" fill="#fbc02d"/>
+              <circle cx="200" cy="78" r="24" fill="#90caf9"/>
+            </svg>
+            <div class="media-label"><span>💃 Seni Tari Tradisional</span><span>Kesenian</span></div>
+          </div>
+          <!-- 3. Pencak Silat -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="230" fill="#689f38"/>
+              <rect y="170" width="400" height="60" fill="#bbdefb"/>
+              <!-- Pesilat Seragam Merah -->
+              <path d="M120,195 L165,110 L225,125 L245,195 Z" fill="#b71c1c"/>
+              <circle cx="195" cy="85" r="20" fill="#212121"/>
+              <circle cx="195" cy="88" r="14" fill="#f5cfa6"/>
+            </svg>
+            <div class="media-label"><span>🥋 Pencak Silat</span><span>Bela Diri</span></div>
+          </div>
+          <!-- 4. Futsal / Voli -->
+          <div class="media-card">
+            <svg viewBox="0 0 400 230">
+              <rect width="400" height="130" fill="#388e3c"/>
+              <rect y="130" width="400" height="100" fill="#e69a73"/>
+              <line x1="0" y1="185" x2="400" y2="165" stroke="#fff" stroke-width="2"/>
+              <!-- Barisan Tim Olahraga Jersey Putih-Biru -->
+              <g transform="translate(65,98)">
+                <rect x="0" y="20" width="14" height="28" fill="#1976d2"/><rect x="0" y="48" width="14" height="22" fill="#212121"/>
+                <rect x="35" y="20" width="14" height="28" fill="#fff"/><rect x="35" y="48" width="14" height="22" fill="#1976d2"/>
+                <rect x="70" y="20" width="14" height="28" fill="#fff"/><rect x="70" y="48" width="14" height="22" fill="#1976d2"/>
+                <rect x="105" y="20" width="14" height="28" fill="#fff"/><rect x="105" y="48" width="14" height="22" fill="#1976d2"/>
+                <rect x="140" y="20" width="14" height="28" fill="#fff"/><rect x="140" y="48" width="14" height="22" fill="#1976d2"/>
+                <rect x="175" y="20" width="14" height="28" fill="#fff"/><rect x="175" y="48" width="14" height="22" fill="#1976d2"/>
+                <rect x="210" y="20" width="14" height="28" fill="#fff"/><rect x="210" y="48" width="14" height="22" fill="#1976d2"/>
+              </g>
+            </svg>
+            <div class="media-label"><span>⚽ Futsal &amp; Bola Voli Smancik</span><span>Olahraga</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. HALAMAN PUSAT DOWNLOAD -->
+    <div class="smc-page" data-page="download">
+      <div class="smc-content-box">
+        <h2 class="smc-h1" style="font-size:20px;margin-bottom:6px">Logo Sekolah dan Ekskul</h2>
+        <p style="font-size:11.5px;font-weight:700;color:#333;margin:0 0 24px;max-width:none">
+          Untuk Memudahkan Download Logo Sekolah dan Ekskul yagn ada di SMAN 1 Cikidang, maka kami sediakan halaman ini, terimakasih dan semoga bermanfaat
+        </p>
+
+        <div class="dl-list">
+          <!-- Row 1: Adiwiyata -->
+          <div class="dl-row">
+            <svg width="76" height="76" viewBox="0 0 100 100">
+              <circle cx="50" cy="48" r="38" fill="#43a047" stroke="#fdd835" stroke-width="4"/>
+              <circle cx="50" cy="48" r="26" fill="#fff9c4"/>
+              <path d="M35,58 Q50,30 65,58 Z" fill="#2e7d32"/>
+              <rect x="14" y="76" width="72" height="12" rx="4" fill="#fdd835" stroke="#111" stroke-width="1.5"/>
+              <text x="50" y="85" text-anchor="middle" font-size="6.5" font-weight="900" fill="#111">SMAN 1 CIKIDANG</text>
+            </svg>
+            <div class="dl-title">LOGO ADIWIYATA SMAN 1 CIKIDANG</div>
+            <button class="dl-btn" onclick="downloadLogo('LOGO ADIWIYATA SMAN 1 CIKIDANG')">Download</button>
+          </div>
+
+          <!-- Row 2: Logo SMAN 1 Cikidang -->
+          <div class="dl-row">
+            <svg width="76" height="76" viewBox="0 0 120 120">
+              <polygon points="60,6 108,28 96,94 60,112 24,94 12,28" fill="#1b8a3d"/>
+              <circle cx="60" cy="58" r="34" fill="#ffd600" stroke="#111" stroke-width="2.5"/>
+              <rect x="46" y="44" width="28" height="20" fill="#fff" stroke="#111" stroke-width="2"/>
+              <path d="M18,98 Q60,112 102,98 L106,106 Q60,120 14,106 Z" fill="#fff" stroke="#111" stroke-width="1.5"/>
+            </svg>
+            <div class="dl-title">LOGO SMAN 1 CIKIDANG</div>
+            <button class="dl-btn" onclick="downloadLogo('LOGO SMAN 1 CIKIDANG')">Download</button>
+          </div>
+
+          <!-- Row 3: Logo Rohis Smancik -->
+          <div class="dl-row">
+            <svg width="76" height="76" viewBox="0 0 100 100">
+              <rect width="100" height="100" rx="8" fill="#fff" stroke="#eee"/>
+              <path d="M25,45 C25,80 75,80 75,45 C75,68 25,68 25,45 Z" fill="#2e7d32"/>
+              <polygon points="50,18 55,34 70,34 58,43 62,58 50,49 38,58 42,43 30,34 45,34" fill="#ffd600"/>
+              <text x="50" y="88" text-anchor="middle" font-size="7" font-weight="800" fill="#b71c1c">ROHIS SMANCIK</text>
+            </svg>
+            <div class="dl-title">LOGO ROHIS SMANCIK</div>
+            <button class="dl-btn" onclick="downloadLogo('LOGO ROHIS SMANCIK')">Download</button>
+          </div>
+
+          <!-- Row 4: Logo Japan Club -->
+          <div class="dl-row">
+            <svg width="76" height="76" viewBox="0 0 100 100">
+              <rect width="100" height="100" rx="8" fill="#f8bbd0"/>
+              <circle cx="50" cy="46" r="30" fill="#111" stroke="#fff" stroke-width="2"/>
+              <circle cx="50" cy="46" r="14" fill="#e91e63"/>
+              <text x="50" y="90" text-anchor="middle" font-size="7.5" font-weight="800" fill="#111">日本のクラブ</text>
+            </svg>
+            <div class="dl-title">LOGO JAPAN CLUB</div>
+            <button class="dl-btn" onclick="downloadLogo('LOGO JAPAN CLUB')">Download</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. HALAMAN PORTAL DIGITAL -->
+    <div class="smc-page" data-page="portal">
+      <div class="smc-content-box">
+        <h2 class="smc-h1">Portal Digital SMAN 1 Cikidang</h2>
+        <p style="font-size:14px;color:#444;margin-bottom:24px">Layanan terpadu pembelajaran daring, asesmen nasional, dan sistem informasi sekolah.</p>
+        <div class="photo-grid-2x2">
+          <div class="media-card" style="padding:20px">
+            <h3 style="margin:0 0 6px;color:#359c85">📘 E-Learning &amp; LMS Smancik</h3>
+            <p style="font-size:13px;color:#555;margin:0 0 14px">Portal materi pelajaran, tugas harian, dan diskusi daring guru bersama siswa.</p>
+            <button class="dl-btn" onclick="toast('Membuka Portal E-Learning SMAN 1 Cikidang')">Masuk Portal</button>
+          </div>
+          <div class="media-card" style="padding:20px">
+            <h3 style="margin:0 0 6px;color:#359c85">💻 Simulasi &amp; Portal ANBK</h3>
+            <p style="font-size:13px;color:#555;margin:0 0 14px">Akses ujian berbasis komputer dan latihan Asesmen Nasional SMAN 1 Cikidang.</p>
+            <button class="dl-btn" onclick="toast('Membuka Portal ANBK SMAN 1 Cikidang')">Buka ANBK</button>
+          </div>
+          <div class="media-card" style="padding:20px">
+            <h3 style="margin:0 0 6px;color:#359c85">📚 Perpustakaan Digital Literasi</h3>
+            <p style="font-size:13px;color:#555;margin:0 0 14px">Katalog e-book dan pojok literasi penunjang visi sekolah berwawasan lingkungan.</p>
+            <button class="dl-btn" onclick="toast('Membuka E-Library SMAN 1 Cikidang')">Buka Katalog</button>
+          </div>
+          <div class="media-card" style="padding:20px">
+            <h3 style="margin:0 0 6px;color:#359c85">🎓 Info PPDB &amp; Alumni</h3>
+            <p style="font-size:13px;color:#555;margin:0 0 14px">Informasi penerimaan peserta didik baru dan penelusuran lulusan (Tracer Study).</p>
+            <button class="dl-btn" onclick="toast('Membuka Halaman PPDB SMAN 1 Cikidang')">Lihat Info</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <script>
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const EMAIL='halo@namakamu.id';
+const EMAIL='halo@sanieamonica.id';
 const SKILLS=[['HTML &amp; CSS',95],['JavaScript',88],['React',80],['Node.js',75],['UI Design',85],['Figma',70]];
 const PROJ=[
-{t:'Warung Digital',c:'Web',k:['HTML &amp; CSS','JavaScript'],d:'Toko online kecil dengan keranjang interaktif dan checkout satu halaman.',col:'--t1',g:'W'},
-{t:'Catatan Harian',c:'Aplikasi',k:['React','Node.js'],d:'Aplikasi catatan dengan mode gelap, tag, dan pencarian instan.',col:'--t2',g:'C'},
-{t:'Rebrand Kopi Senja',c:'Desain',k:['UI Design','Figma'],d:'Identitas visual lengkap untuk kedai kopi lokal: logo, menu, dan kemasan.',col:'--a',g:'K'},
-{t:'Dasbor Cuaca',c:'Web',k:['JavaScript','React'],d:'Dasbor cuaca dengan grafik yang bergerak mengikuti kursor.',col:'--t3',g:'D'},
-{t:'Bot Pengingat',c:'Aplikasi',k:['Node.js','JavaScript'],d:'Bot yang mengirim pengingat jadwal ke grup chat tiap pagi.',col:'--t1',g:'B'},
-{t:'Kit UI Mungil',c:'Desain',k:['Figma','UI Design','HTML &amp; CSS'],d:'Kumpulan komponen antarmuka yang siap dipakai ulang di proyek lain.',col:'--t2',g:'U'}];
+{t:'Website SMAN 1 Cikidang',c:'Web',k:['HTML &amp; CSS','JavaScript','UI Design'],d:'Website resmi SMAN 1 Cikidang (Sekolah Berbudaya Lingkungan) lengkap dengan Profil, Visi Misi, PTK, Sarpras, Ekskul & Pusat Download.',col:'--t2',g:'🏫',smancik:true}
+];
+
 const dec=s=>s.replace(/&amp;/g,'&');
-let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200)}
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2400)}
 
 /* tema */
 const R=document.documentElement;
@@ -233,7 +914,7 @@ $('#reset').onclick=e=>{tiles.forEach(t=>t.home=true);burst(e.clientX,e.clientY,
 $('#grav').onclick=e=>{grav=!grav;e.target.textContent='Gravitasi: '+(grav?'nyala':'mati');if(!grav)tiles.forEach(t=>{if(!t.home){t.vx+=(Math.random()-.5)*12;t.vy-=8}})};
 
 /* peran mengetik */
-const roles=['web developer','desainer antarmuka','tukang bikin hal aneh'];let ri=0,ci=0,del=false;
+const roles=['web developer','desainer antarmuka','pembuat web SMAN 1 Cikidang'];let ri=0,ci=0,del=false;
 (function ty(){const w=roles[ri];$('#role').textContent=w.slice(0,ci);if(!del&&ci===w.length){del=true;return setTimeout(ty,1400)}if(del&&ci===0){del=false;ri=(ri+1)%roles.length}ci+=del?-1:1;setTimeout(ty,del?35:70)})();
 
 /* magnet tombol */
@@ -243,33 +924,183 @@ $$('.mag').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundin
 function tilt(el){const m=+(el.dataset.t||10);el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;el.style.transform=m?`rotateY(${(x-.5)*m}deg) rotateX(${(.5-y)*m}deg) translateZ(0)`:'';el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')});el.addEventListener('pointerleave',()=>el.style.transform='')}
 $$('.tilt').forEach(tilt);
 
+/* Interaksi Card Tunggal -> Morph / Gulir Terbuka Menjadi Web SMAN 1 Cikidang */
+const singleCard=$('#single-card');
+const embedSection=$('#smancik-embed-section');
+
+function expandCardToWeb(e){
+  if(e&&e.clientX)burst(e.clientX,e.clientY,32);
+  singleCard.classList.add('morphed-out');
+  singleCard.setAttribute('aria-expanded','true');
+  embedSection.classList.add('expanded');
+  setTimeout(()=>{
+    embedSection.scrollIntoView({behavior:'smooth',block:'nearest'});
+  },180);
+}
+
+function foldWebToCard(e){
+  if(e&&e.clientX)burst(e.clientX,e.clientY,16);
+  embedSection.classList.remove('expanded');
+  singleCard.classList.remove('morphed-out');
+  singleCard.setAttribute('aria-expanded','false');
+  $('#proyek').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+singleCard.onclick=e=>expandCardToWeb(e);
+$('#foldSmancikBtn').onclick=e=>foldWebToCard(e);
+$('#expandFullBtn').onclick=e=>{burst(e.clientX,e.clientY,28);openSmancikFullscreen()};
+
 /* keahlian */
 const sk=$('#skills');
-SKILLS.forEach(([n,v])=>{const b=document.createElement('button');b.className='sk';b.innerHTML=`<b><span>${n}</span><span>${v}%</span></b><div class="bar"><i data-w="${v}"></i></div><small>Klik untuk lihat proyeknya</small>`;b.onclick=()=>{filter={k:n};renderGrid();$('#proyek').scrollIntoView();toast('Menampilkan proyek: '+dec(n))};sk.appendChild(b)});
+SKILLS.forEach(([n,v])=>{
+  const b=document.createElement('button');
+  b.className='sk';
+  b.innerHTML=`<b><span>${n}</span><span>${v}%</span></b><div class="bar"><i data-w="${v}"></i></div><small>Klik untuk lihat di Web SMAN 1 Cikidang</small>`;
+  b.onclick=e=>{
+    $('#proyek').scrollIntoView({behavior:'smooth'});
+    setTimeout(()=>expandCardToWeb(e),350);
+    toast('Membuka karya dengan keahlian: '+dec(n));
+  };
+  sk.appendChild(b);
+});
 
-/* proyek */
-let filter={c:'Semua'};const tabs=$('#tabs'),grid=$('#grid');
-['Semua','Web','Aplikasi','Desain'].forEach(c=>{const b=document.createElement('button');b.className='tab';b.textContent=c;b.onclick=()=>{filter={c};renderGrid()};tabs.appendChild(b)});
-const fn=document.createElement('span');fn.id='fnote';tabs.appendChild(fn);
-PROJ.forEach((p,i)=>{const c=document.createElement('button');c.className='card tilt';c.dataset.t=12;c.innerHTML=`<div class="top" style="background:var(${p.col})">${p.g}</div><div class="bd"><h3>${p.t}</h3><p>${p.d}</p><div class="chips">${p.k.map(k=>`<span>${k}</span>`).join('')}</div></div>`;c.onclick=e=>openM(p,e);tilt(c);grid.appendChild(c);p.el=c});
-function renderGrid(){PROJ.forEach(p=>{const ok=filter.k?p.k.includes(filter.k):(filter.c==='Semua'||p.c===filter.c);p.el.classList.toggle('hide',!ok)});$$('.tab').forEach(b=>b.classList.toggle('on',!filter.k&&b.textContent===filter.c));fn.textContent=filter.k?'Filter keahlian: '+dec(filter.k)+' (pilih tab untuk reset)':''}
-renderGrid();
-function openM(p,e){$('#mbox').innerHTML=`<div class="top" style="background:var(${p.col})">${p.g}</div><div class="bd"><h3 style="margin:0;font-size:28px">${p.t}</h3><p>${p.d}</p><div class="chips" style="margin-bottom:18px">${p.k.map(k=>`<span>${k}</span>`).join('')}</div><div class="row"><button class="btn" id="mclose">Tutup</button><button class="btn ghost" id="mdemo">Lihat demo</button></div></div>`;$('#modal').classList.add('open');$('#mclose').onclick=closeM;$('#mdemo').onclick=ev=>{burst(ev.clientX,ev.clientY,30);toast('Tautan demo belum diisi')};burst(e.clientX,e.clientY,14)}
-function closeM(){$('#modal').classList.remove('open')}
-$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+/* ============================================================
+   INISIALISASI WEBSITE SMAN 1 CIKIDANG (INLINE & FULLSCREEN)
+   ============================================================ */
+const GURU_DATA=[
+  {n:'Bpk. Hendra, S.Pd',type:'maleSuit'},
+  {n:'Ibu Siti Rahma, S.Pd',type:'hijabGrey'},
+  {n:'Ibu Rina Kartika, M.Pd',type:'hijabPattern'},
+  {n:'Ibu Dewi Lestari, S.Pd',type:'hijabBatik'},
+  {n:'Ibu Nisa Amelia, S.Pd',type:'hijabPinkGlasses'}
+];
+const TENDIK_DATA=[
+  {n:'Bpk. Dedi (Staf TU)',type:'maleGlassesBatik'},
+  {n:'Ibu Yuli (Bendahara)',type:'hijabKhaki'},
+  {n:'Ibu Ratna (Administrasi)',type:'hijabYellow'},
+  {n:'Bpk. Agus (Operator)',type:'maleNavy'},
+  {n:'Bpk. Tatang (Pustakawan)',type:'maleMustacheBatik'},
+  {n:'Bpk. Ujang (Sarpras)',type:'malePolo'}
+];
+
+function renderAvatarSVG(type){
+  const avatars={
+    maleSuit:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M15,150 C15,105 105,105 105,150 Z" fill="#1b2631"/><polygon points="48,108 60,145 72,108" fill="#fff"/><polygon points="57,114 63,114 64,145 56,145" fill="#111"/><ellipse cx="60" cy="62" rx="22" ry="27" fill="#e5b895"/><path d="M38,52 C38,30 82,30 82,52 C74,42 46,42 38,52 Z" fill="#1c1c1c"/><circle cx="52" cy="60" r="2.2" fill="#111"/><circle cx="68" cy="60" r="2.2" fill="#111"/><path d="M54,78 Q60,82 66,78" stroke="#333" stroke-width="2" fill="none"/><path d="M55,87 Q60,91 65,87" stroke="#1c1c1c" stroke-width="3" fill="none"/></svg>`,
+    hijabGrey:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M16,150 C18,98 102,98 104,150 Z" fill="#8e8e93"/><path d="M34,58 C34,26 86,26 86,58 L96,135 L24,135 Z" fill="#9a9a9e"/><ellipse cx="60" cy="62" rx="18" ry="22" fill="#f3cbb0"/><circle cx="53" cy="60" r="2" fill="#111"/><circle cx="67" cy="60" r="2" fill="#111"/><path d="M55,72 Q60,76 65,72" stroke="#b85d5d" stroke-width="2" fill="none"/></svg>`,
+    hijabPattern:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M14,150 C16,102 104,102 106,150 Z" fill="#4a4a4a"/><path d="M32,56 C32,24 88,24 88,56 L98,132 L22,132 Z" fill="#d7ccc8"/><circle cx="45" cy="95" r="6" fill="#bc8f8f" opacity=".5"/><circle cx="75" cy="105" r="8" fill="#bc8f8f" opacity=".5"/><ellipse cx="60" cy="62" rx="18" ry="22" fill="#f2c6a8"/><circle cx="53" cy="60" r="2" fill="#111"/><circle cx="67" cy="60" r="2" fill="#111"/><path d="M55,72 Q60,76 65,72" stroke="#b85d5d" stroke-width="2" fill="none"/></svg>`,
+    hijabBatik:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M14,150 C16,100 104,100 106,150 Z" fill="#5d4e3c"/><path d="M32,56 C32,24 88,24 88,56 L96,134 L24,134 Z" fill="#8c7b65"/><ellipse cx="60" cy="62" rx="19" ry="23" fill="#efc3a4"/><circle cx="53" cy="60" r="2" fill="#111"/><circle cx="67" cy="60" r="2" fill="#111"/><path d="M55,73 Q60,77 65,73" stroke="#a94444" stroke-width="2" fill="none"/></svg>`,
+    hijabPinkGlasses:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M16,150 C18,102 102,102 104,150 Z" fill="#5c4033"/><path d="M34,56 C34,25 86,25 86,56 L94,135 L26,135 Z" fill="#d8b4b8"/><ellipse cx="60" cy="62" rx="18" ry="22" fill="#f7d3ba"/><circle cx="52" cy="60" r="6" fill="none" stroke="#333" stroke-width="1.6"/><circle cx="68" cy="60" r="6" fill="none" stroke="#333" stroke-width="1.6"/><line x1="58" y1="60" x2="62" y2="60" stroke="#333" stroke-width="1.6"/><path d="M55,73 Q60,77 65,73" stroke="#b85d5d" stroke-width="2" fill="none"/></svg>`,
+    maleGlassesBatik:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M18,150 C18,106 102,106 102,150 Z" fill="#cfd8dc"/><ellipse cx="60" cy="64" rx="20" ry="25" fill="#d7a987"/><path d="M40,52 C40,32 80,32 80,52 Z" fill="#1a1a1a"/><rect x="45" y="56" width="12" height="8" fill="none" stroke="#111" stroke-width="1.8"/><rect x="63" y="56" width="12" height="8" fill="none" stroke="#111" stroke-width="1.8"/><path d="M55,76 Q60,80 65,76" stroke="#333" stroke-width="2" fill="none"/></svg>`,
+    hijabKhaki:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M16,150 C18,102 102,102 104,150 Z" fill="#c8b89d"/><path d="M34,56 C34,25 86,25 86,56 L92,126 L28,126 Z" fill="#b59e7a"/><ellipse cx="60" cy="62" rx="18" ry="22" fill="#f2c8ab"/><circle cx="53" cy="60" r="2" fill="#111"/><circle cx="67" cy="60" r="2" fill="#111"/><path d="M55,73 Q60,76 65,73" stroke="#a94444" stroke-width="2" fill="none"/></svg>`,
+    hijabYellow:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M14,150 C16,100 104,100 106,150 Z" fill="#fdd835"/><path d="M32,56 C32,24 88,24 88,56 L96,134 L24,134 Z" fill="#fbc02d"/><ellipse cx="60" cy="62" rx="18" ry="22" fill="#f3cbb0"/><rect x="46" y="56" width="11" height="7" fill="none" stroke="#333" stroke-width="1.5"/><rect x="63" y="56" width="11" height="7" fill="none" stroke="#333" stroke-width="1.5"/><path d="M55,73 Q60,76 65,73" stroke="#a94444" stroke-width="2" fill="none"/></svg>`,
+    maleNavy:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M16,150 C18,104 102,104 104,150 Z" fill="#1a237e"/><ellipse cx="60" cy="64" rx="21" ry="26" fill="#dfb18b"/><path d="M39,52 C39,30 81,30 81,52 Z" fill="#111"/><circle cx="52" cy="62" r="2.2" fill="#111"/><circle cx="68" cy="62" r="2.2" fill="#111"/><path d="M54,76 Q60,80 66,76" stroke="#333" stroke-width="2" fill="none"/></svg>`,
+    maleMustacheBatik:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M16,150 C18,104 102,104 104,150 Z" fill="#78909c"/><ellipse cx="60" cy="64" rx="21" ry="26" fill="#d9a782"/><path d="M39,50 C39,30 81,30 81,50 Z" fill="#2b2b2b"/><rect x="45" y="57" width="12" height="8" fill="none" stroke="#222" stroke-width="1.6"/><rect x="63" y="57" width="12" height="8" fill="none" stroke="#222" stroke-width="1.6"/><path d="M51,74 Q60,71 69,74" stroke="#222" stroke-width="3" fill="none"/></svg>`,
+    malePolo:`<svg viewBox="0 0 120 150"><rect width="120" height="150" fill="#e60000"/><path d="M16,150 C18,104 102,104 104,150 Z" fill="#6d5c5c"/><ellipse cx="60" cy="64" rx="20" ry="25" fill="#d7a683"/><path d="M40,48 C40,32 80,32 80,48" fill="#222"/><circle cx="52" cy="62" r="2.2" fill="#111"/><circle cx="68" cy="62" r="2.2" fill="#111"/><path d="M52,74 Q60,71 68,74" stroke="#222" stroke-width="2.5" fill="none"/></svg>`
+  };
+  return avatars[type]||avatars.maleSuit;
+}
+
+function mountSmancikInstance(container, urlSpanId){
+  const tpl=$('#smancik-template').content.cloneNode(true);
+  const root=tpl.querySelector('.smc-root');
+
+  // Isi foto Guru & Tendik
+  const gGrid=root.querySelector('#guru-grid');
+  GURU_DATA.forEach(g=>{
+    const d=document.createElement('div');
+    d.innerHTML=`<div class="ptk-photo">${renderAvatarSVG(g.type)}</div><div class="ptk-caption">${g.n}</div>`;
+    gGrid.appendChild(d);
+  });
+  const tGrid=root.querySelector('#tendik-grid');
+  TENDIK_DATA.forEach(t=>{
+    const d=document.createElement('div');
+    d.innerHTML=`<div class="ptk-photo">${renderAvatarSVG(t.type)}</div><div class="ptk-caption">${t.n}</div>`;
+    tGrid.appendChild(d);
+  });
+
+  function switchPage(pageKey){
+    $$('.smc-page',root).forEach(p=>p.classList.toggle('active',p.dataset.page===pageKey));
+    const isProfil=['sambutan','visimisi','sejarah','ptk','kepsek'].includes(pageKey);
+    $$('.smc-nav-btn',root).forEach(b=>{
+      const nav=b.dataset.nav;
+      b.classList.toggle('active',nav===pageKey||(isProfil&&nav==='profil'));
+    });
+    $$('.smc-drop-btn',root).forEach(b=>{
+      b.classList.toggle('active',b.dataset.go===pageKey);
+    });
+    $$('.has-drop',root).forEach(d=>d.classList.remove('open'));
+    const urlEl=document.getElementById(urlSpanId);
+    if(urlEl)urlEl.textContent=pageKey;
+  }
+
+  // Klik menu utama & sub-menu
+  $$('[data-go]',root).forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      switchPage(btn.dataset.go);
+    });
+  });
+  const berandaBtn=root.querySelector('[data-nav="beranda"]');
+  berandaBtn.addEventListener('click',()=>switchPage('beranda'));
+
+  // Toggle dropdown Profil saat diklik di layar sentuh
+  const profilBtn=root.querySelector('[data-nav="profil"]');
+  const dropParent=profilBtn.closest('.has-drop');
+  profilBtn.addEventListener('click',e=>{
+    e.stopPropagation();
+    dropParent.classList.toggle('open');
+  });
+  root.addEventListener('click',()=>dropParent.classList.remove('open'));
+
+  container.innerHTML='';
+  container.appendChild(tpl);
+  return {switchPage};
+}
+
+const inlineApp=mountSmancikInstance($('#smancik-inline-mount'),'embed-url-path');
+const modalApp=mountSmancikInstance($('#smancik-modal-mount'),'modal-url-path');
+
+function openSmancikFullscreen(page){
+  if(page)modalApp.switchPage(page);
+  $('#smancik-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeSmancikFullscreen(){
+  $('#smancik-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function downloadLogo(name){
+  toast('Mengunduh '+name+'...');
+  const blob=new Blob([`Logo Resmi: ${name}\nSMAN 1 CIKIDANG - Sekolah Berbudaya Lingkungan`],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=name.toLowerCase().replace(/\s+/g,'-')+'.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    closeSmancikFullscreen();
+  }
+});
 
 /* terminal */
 const out=$('#tout'),cmd=$('#cmd');
 function pr(t,c){out.innerHTML+=(c?`<span class="c">${t}</span>`:t)+'\n';out.scrollTop=out.scrollHeight}
-pr('Selamat datang. Ketik help untuk daftar perintah.');
-const H_={help:()=>'Perintah: about, skills, projects, theme [pink|biru|hijau|oranye], mode, party, contact, clear',
-about:()=>'Saniea Monica, developer dan desainer yang suka membuat antarmuka yang bisa dimainkan.',
-skills:()=>SKILLS.map(s=>dec(s[0])+' '+'█'.repeat(Math.round(s[1]/10))+' '+s[1]+'%').join('\n'),
-projects:()=>PROJ.map(p=>'• '+p.t+' ('+p.c+')').join('\n'),
-contact:()=>'Email: '+EMAIL,
-mode:()=>{$('#mode').click();return 'Mode diganti.'},
-party:()=>{for(let i=0;i<8;i++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.6,40),i*180);return 'Selamat berpesta!'},
-clear:()=>{out.innerHTML='';return ''}};
+pr('Selamat datang. Ketik help untuk daftar perintah (ketik smancik untuk buka web SMAN 1 Cikidang).');
+const H_={
+  help:()=>'Perintah: about, skills, projects, smancik, theme [pink|biru|hijau|oranye], mode, party, contact, clear',
+  about:()=>'Saniea Monica, developer dan desainer pembuat Website SMAN 1 Cikidang & antarmuka interaktif.',
+  skills:()=>SKILLS.map(s=>dec(s[0])+' '+'█'.repeat(Math.round(s[1]/10))+' '+s[1]+'%').join('\n'),
+  projects:()=>PROJ.map(p=>'• '+p.t+' ('+p.c+')').join('\n'),
+  smancik:()=>{openSmancikFullscreen('beranda');return 'Membuka Website SMAN 1 Cikidang...'},
+  contact:()=>'Email: '+EMAIL,
+  mode:()=>{$('#mode').click();return 'Mode diganti.'},
+  party:()=>{for(let i=0;i<8;i++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.6,40),i*180);return 'Selamat berpesta!'},
+  clear:()=>{out.innerHTML='';return ''}
+};
 const TH={pink:'#FF5FA2',biru:'#5C7CFF',hijau:'#2FD48B',oranye:'#FF9F1C'};
 cmd.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const v=cmd.value.trim();cmd.value='';if(!v)return;pr('$ '+v,1);const [k,a]=v.toLowerCase().split(/\s+/);
 if(k==='theme'){TH[a]?(R.style.setProperty('--a',TH[a]),pr('Aksen diganti ke '+a+'.')):pr('Pilih: pink, biru, hijau, atau oranye.')}
@@ -288,3 +1119,4 @@ new IntersectionObserver((es,o)=>{if(!es[0].isIntersecting)return;o.disconnect()
 </script>
 </body>
 </html>
+```
