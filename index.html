@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portofolio – Saniea Monica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F0FF;--fg:#141233;--mut:#5d5a82;--card:#fff;--line:rgba(20,18,51,.16);--a:#FF5FA2;--t1:#FFE45C;--t2:#8CF0C8;--t3:#FF9F5C;--ink:#141233;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E0C2B;--fg:#F2F0FF;--mut:#a09cc9;--card:#1a1745;--line:rgba(242,240,255,.18)}}
+:root[data-theme="dark"]{--bg:#0E0C2B;--fg:#F2F0FF;--mut:#a09cc9;--card:#1a1745;--line:rgba(242,240,255,.18)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.55;overflow-x:hidden;transition:background .4s,color .4s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+section{padding:90px 20px;max-width:1080px;margin:0 auto}
+h2{font-size:clamp(34px,6vw,60px);line-height:1;margin:0 0 28px;letter-spacing:-.03em;font-weight:800}
+p{max-width:62ch}
+.btn{font:inherit;font-weight:600;border:3px solid var(--ink);background:var(--a);color:var(--ink);padding:12px 20px;border-radius:999px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:translate(3px,3px)!important;box-shadow:1px 1px 0 var(--ink)}
+.btn.ghost{background:var(--card);color:var(--fg);border-color:var(--fg);box-shadow:4px 4px 0 var(--fg)}
+:focus-visible{outline:3px solid var(--a);outline-offset:3px}
+#prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:4px;background:var(--a);width:0;z-index:70}
+/* panel tema */
+#tools{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:50;display:flex;gap:8px;align-items:center;background:var(--card);border:2px solid var(--fg);border-radius:999px;padding:6px 10px}
+.sw{width:22px;height:22px;border-radius:50%;border:2px solid var(--fg);cursor:pointer;padding:0;transition:transform .2s}
+.sw:hover{transform:scale(1.3) rotate(15deg)}
+#mode{background:none;border:0;font-size:18px;cursor:pointer;color:var(--fg);padding:0 2px}
+/* dock */
+#dock{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;background:var(--fg);padding:6px;border-radius:999px;max-width:calc(100vw - 20px);overflow-x:auto;scrollbar-width:none}
+#dock a{color:var(--bg);text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;white-space:nowrap;transition:background .25s,color .25s}
+#dock a:hover{background:rgba(128,128,128,.35)}
+#dock a.on{background:var(--a);color:var(--ink)}
+/* hero */
+.hero{padding-top:70px;min-height:100svh}
+.hi{font-size:clamp(18px,3vw,26px);margin:0 0 6px;font-weight:500}
+.hi b{background:var(--t1);color:var(--ink);padding:0 8px;border-radius:8px}
+.hi b::after{content:"|";animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+#stage{position:relative;height:min(62vh,520px);min-height:360px;border:3px dashed var(--line);border-radius:28px;touch-action:none;overflow:hidden;margin:14px 0 20px;background:radial-gradient(circle,var(--line) 1.5px,transparent 1.6px) 0 0/26px 26px}
+.tile{position:absolute;left:0;top:0;display:grid;place-items:center;font-weight:800;color:var(--ink);border:3px solid var(--ink);border-radius:22%;box-shadow:5px 5px 0 var(--ink);cursor:grab;user-select:none;touch-action:none;letter-spacing:-.04em;will-change:transform}
+.tile.hold{cursor:grabbing;box-shadow:12px 12px 0 var(--ink)}
+.hc{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hc p{flex:1 1 280px;margin:0;color:var(--mut)}
+/* tilt */
+.tilt{transform-style:preserve-3d;transition:transform .15s;position:relative}
+.tilt::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 60%);opacity:0;transition:opacity .25s}
+.tilt:hover::after{opacity:1}
+/* tentang */
+.about{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:36px;align-items:center}
+@media(max-width:760px){.about{grid-template-columns:1fr}}
+.id{background:var(--t2);color:var(--ink);border:3px solid var(--ink);border-radius:28px;padding:24px;box-shadow:8px 8px 0 var(--ink)}
+.av{width:120px;height:120px;border-radius:50%;background:var(--a);border:3px solid var(--ink);display:grid;place-items:center;font-size:44px;font-weight:800;margin-bottom:14px}
+.id h3{margin:0;font-size:26px}.id span{font-size:15px}
+.nums{display:flex;gap:26px;flex-wrap:wrap;margin-top:20px}
+.nums b{display:block;font-size:44px;line-height:1;font-weight:800}
+.nums small{color:var(--mut)}
+/* skill */
+#skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.sk{font:inherit;text-align:left;color:var(--fg);background:var(--card);border:3px solid var(--fg);border-radius:20px;padding:16px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.sk:hover{transform:translate(-3px,-3px) rotate(-1deg);box-shadow:6px 6px 0 var(--a)}
+.sk b{display:flex;justify-content:space-between;font-size:18px}
+.bar{height:12px;border:2px solid var(--fg);border-radius:9px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--a);transition:width .9s cubic-bezier(.3,1.6,.5,1)}
+.sk small{color:var(--mut)}
+/* proyek */
+#tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.tab{font:inherit;font-weight:600;background:none;color:var(--fg);border:2px solid var(--fg);border-radius:999px;padding:6px 16px;cursor:pointer}
+.tab.on{background:var(--fg);color:var(--bg)}
+#fnote{color:var(--mut);font-size:14px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;perspective:900px}
+.card{background:var(--card);border:3px solid var(--fg);border-radius:24px;overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:var(--fg)}
+.card .top{height:150px;display:grid;place-items:center;font-size:74px;font-weight:800;color:var(--ink);border-bottom:3px solid var(--fg)}
+.card .bd{padding:16px}.card h3{margin:0 0 4px;font-size:22px}.card p{margin:0;color:var(--mut);font-size:15px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.chips span{font-size:13px;border:2px solid var(--fg);border-radius:99px;padding:1px 10px}
+.card.hide{display:none}
+#modal{position:fixed;inset:0;background:rgba(10,8,40,.65);display:none;place-items:center;z-index:80;padding:20px}
+#modal.open{display:grid}
+#mbox{background:var(--card);border:3px solid var(--fg);border-radius:28px;max-width:520px;width:100%;overflow:hidden;animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.6) rotate(-4deg);opacity:0}}
+#mbox .top{height:160px;display:grid;place-items:center;font-size:90px;font-weight:800;color:var(--ink)}
+#mbox .bd{padding:22px}
+/* terminal */
+#term{background:#0b0a1f;color:#d9f9e6;border:3px solid var(--fg);border-radius:20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;overflow:hidden;box-shadow:8px 8px 0 var(--a)}
+#tbar{background:#26234d;padding:8px 14px;display:flex;gap:7px}#tbar i{width:12px;height:12px;border-radius:50%;background:var(--a)}#tbar i:nth-child(2){background:var(--t1)}#tbar i:nth-child(3){background:var(--t2)}
+#tout{height:260px;overflow:auto;padding:14px;white-space:pre-wrap}
+#tout .c{color:var(--t1)}
+#tin{display:flex;gap:8px;padding:0 14px 14px}#tin span{color:var(--t2)}
+#tin input{flex:1;background:none;border:0;color:inherit;font:inherit;outline:none;min-width:0}
+/* kontak */
+.ct{display:grid;gap:14px;max-width:560px}
+.ct textarea{font:inherit;color:var(--fg);background:var(--card);border:3px solid var(--fg);border-radius:20px;padding:14px;min-height:120px;resize:vertical}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+footer{text-align:center;padding:40px 20px 120px;color:var(--mut)}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--a);color:var(--ink);border:3px solid var(--ink);border-radius:14px;padding:10px 18px;font-weight:600;opacity:0;pointer-events:none;transition:.35s;z-index:90}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:95;width:100%;height:100%}
+/* kursor */
+#cd,#cr{position:fixed;left:0;top:0;pointer-events:none;z-index:99;border-radius:50%;display:none}
+#cd{width:8px;height:8px;background:var(--a);margin:-4px 0 0 -4px}
+#cr{width:36px;height:36px;border:2px solid var(--a);margin:-18px 0 0 -18px;transition:width .2s,height .2s,margin .2s,background .2s}
+#cr.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(255,95,162,.18)}
+@media(hover:hover) and (pointer:fine){#cd,#cr{display:block}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+</style>
+</head>
+<body>
+<div id="prog"></div><div id="cd"></div><div id="cr"></div><canvas id="fx"></canvas><div id="toast"></div>
+<div id="tools" aria-label="Pengaturan tampilan">
+<button class="sw" data-c="#FF5FA2" style="background:#FF5FA2" aria-label="Aksen pink"></button>
+<button class="sw" data-c="#5C7CFF" style="background:#5C7CFF" aria-label="Aksen biru"></button>
+<button class="sw" data-c="#2FD48B" style="background:#2FD48B" aria-label="Aksen hijau"></button>
+<button class="sw" data-c="#FF9F1C" style="background:#FF9F1C" aria-label="Aksen oranye"></button>
+<button id="mode" aria-label="Ganti mode terang atau gelap">◐</button>
+</div>
+<nav id="dock">
+<a href="#home" class="on">Beranda</a><a href="#tentang">Tentang</a><a href="#keahlian">Keahlian</a><a href="#proyek">Proyek</a><a href="#terminal">Terminal</a><a href="#kontak">Kontak</a>
+</nav>
+
+<section id="home" class="hero">
+<p class="hi">Halo, aku Saniea Monica, <b id="role"></b></p>
+<div id="stage" aria-label="Huruf nama yang bisa diseret dan dilempar"></div>
+<div class="hc">
+<p>Hurufnya bisa kamu seret dan lempar. Aku suka membuat hal yang terasa bisa disentuh, bukan sekadar dilihat.</p>
+<button class="btn mag" id="reset">Susun ulang</button>
+<button class="btn ghost mag" id="grav">Gravitasi: nyala</button>
+</div>
+</section>
+
+<section id="tentang">
+<h2>Tentang aku</h2>
+<div class="about">
+<div class="id tilt" data-t="8"><div class="av">SM</div><h3>Saniea Monica</h3><span>Developer &amp; desainer, Indonesia</span></div>
+<div>
+<p>Ganti teks ini dengan ceritamu: siapa kamu, apa yang kamu kerjakan, dan hal apa yang membuatmu bersemangat. Tulis singkat, jelas, dan jujur.</p>
+<div class="nums">
+<div><b data-n="32">0</b><small>proyek selesai</small></div>
+<div><b data-n="4">0</b><small>tahun pengalaman</small></div>
+<div><b data-n="999">0</b><small>cangkir kopi</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="keahlian">
+<h2>Keahlian</h2>
+<p style="margin-top:-12px;color:var(--mut)">Klik satu keahlian untuk melihat proyek yang memakainya.</p>
+<div id="skills"></div>
+</section>
+
+<section id="proyek">
+<h2>Proyek</h2>
+<div id="tabs"></div>
+<div id="grid"></div>
+</section>
+
+<section id="terminal">
+<h2>Terminal rahasia</h2>
+<div id="term" class="tilt" data-t="0">
+<div id="tbar"><i></i><i></i><i></i></div>
+<div id="tout"></div>
+<div id="tin"><span>kamu@portofolio:~$</span><input id="cmd" autocomplete="off" spellcheck="false" aria-label="Ketik perintah"></div>
+</div>
+</section>
+
+<section id="kontak">
+<h2>Ayo ngobrol</h2>
+<div class="ct">
+<textarea id="msg" placeholder="Tulis pesanmu di sini…" aria-label="Pesan"></textarea>
+<div class="row">
+<button class="btn mag" id="send">Kirim lewat email</button>
+<button class="btn ghost mag" id="copy">Salin alamat email</button>
+</div>
+</div>
+</section>
+<footer>Dibuat dengan tangan sendiri. Coba ketik <b>party</b> di terminal.</footer>
+
+<div id="modal" role="dialog" aria-modal="true"><div id="mbox"></div></div>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const EMAIL='halo@namakamu.id';
+const SKILLS=[['HTML &amp; CSS',95],['JavaScript',88],['React',80],['Node.js',75],['UI Design',85],['Figma',70]];
+const PROJ=[
+{t:'Warung Digital',c:'Web',k:['HTML &amp; CSS','JavaScript'],d:'Toko online kecil dengan keranjang interaktif dan checkout satu halaman.',col:'--t1',g:'W'},
+{t:'Catatan Harian',c:'Aplikasi',k:['React','Node.js'],d:'Aplikasi catatan dengan mode gelap, tag, dan pencarian instan.',col:'--t2',g:'C'},
+{t:'Rebrand Kopi Senja',c:'Desain',k:['UI Design','Figma'],d:'Identitas visual lengkap untuk kedai kopi lokal: logo, menu, dan kemasan.',col:'--a',g:'K'},
+{t:'Dasbor Cuaca',c:'Web',k:['JavaScript','React'],d:'Dasbor cuaca dengan grafik yang bergerak mengikuti kursor.',col:'--t3',g:'D'},
+{t:'Bot Pengingat',c:'Aplikasi',k:['Node.js','JavaScript'],d:'Bot yang mengirim pengingat jadwal ke grup chat tiap pagi.',col:'--t1',g:'B'},
+{t:'Kit UI Mungil',c:'Desain',k:['Figma','UI Design','HTML &amp; CSS'],d:'Kumpulan komponen antarmuka yang siap dipakai ulang di proyek lain.',col:'--t2',g:'U'}];
+const dec=s=>s.replace(/&amp;/g,'&');
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200)}
+
+/* tema */
+const R=document.documentElement;
+$$('.sw').forEach(b=>b.onclick=e=>{R.style.setProperty('--a',b.dataset.c);burst(e.clientX,e.clientY,24)});
+$('#mode').onclick=()=>{const d=getComputedStyle(R).getPropertyValue('--bg').trim().toLowerCase()==='#0e0c2b';R.dataset.theme=d?'light':'dark'};
+
+/* kursor */
+const cd=$('#cd'),cr=$('#cr');let mx=0,my=0,rx=0,ry=0;
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;cd.style.transform=`translate(${mx}px,${my}px)`;cr.classList.toggle('big',!!e.target.closest('a,button,.tile,.card,.sk,input,textarea'))});
+(function f(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;cr.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(f)})();
+
+/* confetti */
+const fx=$('#fx'),cx=fx.getContext('2d');let P=[];
+function sz(){fx.width=innerWidth;fx.height=innerHeight}sz();addEventListener('resize',sz);
+function burst(x,y,n=40){const cs=['#FFE45C','#8CF0C8','#FF5FA2','#FF9F5C','#5C7CFF'];for(let i=0;i<n;i++){const a=Math.random()*6.28,v=3+Math.random()*7;P.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-4,s:5+Math.random()*7,r:Math.random()*6,c:cs[i%5],l:70+Math.random()*40})}}
+(function loop(){cx.clearRect(0,0,fx.width,fx.height);P=P.filter(p=>p.l-->0);P.forEach(p=>{p.vy+=.28;p.x+=p.vx;p.y+=p.vy;p.vx*=.985;p.r+=.2;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);cx.restore()});requestAnimationFrame(loop)})();
+
+/* hero: huruf fisika */
+const stage=$('#stage');let W,H,S,z=1,grav=true;
+const COLS=['--t1','--t2','--a','--t3'],tiles=[];
+['SANIEA','MONICA'].forEach((w,r)=>[...w].forEach((ch,i)=>{const el=document.createElement('div');el.className='tile';el.textContent=ch;el.style.background=`var(${COLS[(i+r*2)%4]})`;stage.appendChild(el);tiles.push({el,r,i,n:w.length,x:0,y:0,vx:0,vy:0,rot:(Math.random()-.5)*10,vr:0,home:true,drag:false})}));
+function layout(){W=stage.clientWidth;H=stage.clientHeight;S=Math.min(130,(W-24)/6.6,(H-30)/2.3);tiles.forEach(t=>{const e=t.el.style;e.width=e.height=S+'px';e.fontSize=S*.7+'px';t.hx=(W-t.n*S*1.05)/2+t.i*S*1.05;t.hy=H/2-S*1.05+t.r*S*1.05;if(t.home){t.x=t.hx;t.y=t.hy}})}
+layout();addEventListener('resize',layout);
+tiles.forEach(t=>{let ox,oy,lx,ly;const put=()=>t.el.style.transform=`translate(${t.x}px,${t.y}px) rotate(${t.rot}deg)`;
+t.el.addEventListener('pointerdown',e=>{t.el.setPointerCapture(e.pointerId);t.drag=true;t.home=false;const b=stage.getBoundingClientRect();ox=e.clientX-b.left-t.x;oy=e.clientY-b.top-t.y;lx=e.clientX;ly=e.clientY;t.vx=t.vy=0;t.el.classList.add('hold');t.el.style.zIndex=++z});
+t.el.addEventListener('pointermove',e=>{if(!t.drag)return;const b=stage.getBoundingClientRect();t.x=Math.max(0,Math.min(W-S,e.clientX-b.left-ox));t.y=Math.max(0,Math.min(H-S,e.clientY-b.top-oy));t.vx=e.clientX-lx;t.vy=e.clientY-ly;lx=e.clientX;ly=e.clientY;put()});
+const up=()=>{if(!t.drag)return;t.drag=false;t.el.classList.remove('hold');const c=v=>Math.max(-38,Math.min(38,v));t.vx=c(t.vx);t.vy=c(t.vy);t.vr=t.vx*.4};
+t.el.addEventListener('pointerup',up);t.el.addEventListener('pointercancel',up);t.put=put});
+(function tick(){tiles.forEach(t=>{if(t.drag)return;
+if(t.home){t.x+=(t.hx-t.x)*.15;t.y+=(t.hy-t.y)*.15;t.rot+=(0-t.rot)*.12}
+else{if(grav)t.vy+=.6;t.x+=t.vx;t.y+=t.vy;t.rot+=t.vr;t.vr*=.985;
+if(t.x<0){t.x=0;t.vx*=-.75}if(t.x>W-S){t.x=W-S;t.vx*=-.75}
+if(t.y<0){t.y=0;t.vy*=-.75}
+if(t.y>H-S){t.y=H-S;t.vy*=-.72;t.vx*=.96;t.vr*=.9;if(Math.abs(t.vy)<1.2)t.vy=0}
+if(!grav){t.vx*=.997;t.vy*=.997}}
+t.put()});requestAnimationFrame(tick)})();
+$('#reset').onclick=e=>{tiles.forEach(t=>t.home=true);burst(e.clientX,e.clientY,18)};
+$('#grav').onclick=e=>{grav=!grav;e.target.textContent='Gravitasi: '+(grav?'nyala':'mati');if(!grav)tiles.forEach(t=>{if(!t.home){t.vx+=(Math.random()-.5)*12;t.vy-=8}})};
+
+/* peran mengetik */
+const roles=['web developer','desainer antarmuka','tukang bikin hal aneh'];let ri=0,ci=0,del=false;
+(function ty(){const w=roles[ri];$('#role').textContent=w.slice(0,ci);if(!del&&ci===w.length){del=true;return setTimeout(ty,1400)}if(del&&ci===0){del=false;ri=(ri+1)%roles.length}ci+=del?-1:1;setTimeout(ty,del?35:70)})();
+
+/* magnet tombol */
+$$('.mag').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`});b.addEventListener('pointerleave',()=>b.style.transform='')});
+
+/* tilt + sorot */
+function tilt(el){const m=+(el.dataset.t||10);el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;el.style.transform=m?`rotateY(${(x-.5)*m}deg) rotateX(${(.5-y)*m}deg) translateZ(0)`:'';el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')});el.addEventListener('pointerleave',()=>el.style.transform='')}
+$$('.tilt').forEach(tilt);
+
+/* keahlian */
+const sk=$('#skills');
+SKILLS.forEach(([n,v])=>{const b=document.createElement('button');b.className='sk';b.innerHTML=`<b><span>${n}</span><span>${v}%</span></b><div class="bar"><i data-w="${v}"></i></div><small>Klik untuk lihat proyeknya</small>`;b.onclick=()=>{filter={k:n};renderGrid();$('#proyek').scrollIntoView();toast('Menampilkan proyek: '+dec(n))};sk.appendChild(b)});
+
+/* proyek */
+let filter={c:'Semua'};const tabs=$('#tabs'),grid=$('#grid');
+['Semua','Web','Aplikasi','Desain'].forEach(c=>{const b=document.createElement('button');b.className='tab';b.textContent=c;b.onclick=()=>{filter={c};renderGrid()};tabs.appendChild(b)});
+const fn=document.createElement('span');fn.id='fnote';tabs.appendChild(fn);
+PROJ.forEach((p,i)=>{const c=document.createElement('button');c.className='card tilt';c.dataset.t=12;c.innerHTML=`<div class="top" style="background:var(${p.col})">${p.g}</div><div class="bd"><h3>${p.t}</h3><p>${p.d}</p><div class="chips">${p.k.map(k=>`<span>${k}</span>`).join('')}</div></div>`;c.onclick=e=>openM(p,e);tilt(c);grid.appendChild(c);p.el=c});
+function renderGrid(){PROJ.forEach(p=>{const ok=filter.k?p.k.includes(filter.k):(filter.c==='Semua'||p.c===filter.c);p.el.classList.toggle('hide',!ok)});$$('.tab').forEach(b=>b.classList.toggle('on',!filter.k&&b.textContent===filter.c));fn.textContent=filter.k?'Filter keahlian: '+dec(filter.k)+' (pilih tab untuk reset)':''}
+renderGrid();
+function openM(p,e){$('#mbox').innerHTML=`<div class="top" style="background:var(${p.col})">${p.g}</div><div class="bd"><h3 style="margin:0;font-size:28px">${p.t}</h3><p>${p.d}</p><div class="chips" style="margin-bottom:18px">${p.k.map(k=>`<span>${k}</span>`).join('')}</div><div class="row"><button class="btn" id="mclose">Tutup</button><button class="btn ghost" id="mdemo">Lihat demo</button></div></div>`;$('#modal').classList.add('open');$('#mclose').onclick=closeM;$('#mdemo').onclick=ev=>{burst(ev.clientX,ev.clientY,30);toast('Tautan demo belum diisi')};burst(e.clientX,e.clientY,14)}
+function closeM(){$('#modal').classList.remove('open')}
+$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+
+/* terminal */
+const out=$('#tout'),cmd=$('#cmd');
+function pr(t,c){out.innerHTML+=(c?`<span class="c">${t}</span>`:t)+'\n';out.scrollTop=out.scrollHeight}
+pr('Selamat datang. Ketik help untuk daftar perintah.');
+const H_={help:()=>'Perintah: about, skills, projects, theme [pink|biru|hijau|oranye], mode, party, contact, clear',
+about:()=>'Saniea Monica, developer dan desainer yang suka membuat antarmuka yang bisa dimainkan.',
+skills:()=>SKILLS.map(s=>dec(s[0])+' '+'█'.repeat(Math.round(s[1]/10))+' '+s[1]+'%').join('\n'),
+projects:()=>PROJ.map(p=>'• '+p.t+' ('+p.c+')').join('\n'),
+contact:()=>'Email: '+EMAIL,
+mode:()=>{$('#mode').click();return 'Mode diganti.'},
+party:()=>{for(let i=0;i<8;i++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.6,40),i*180);return 'Selamat berpesta!'},
+clear:()=>{out.innerHTML='';return ''}};
+const TH={pink:'#FF5FA2',biru:'#5C7CFF',hijau:'#2FD48B',oranye:'#FF9F1C'};
+cmd.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const v=cmd.value.trim();cmd.value='';if(!v)return;pr('$ '+v,1);const [k,a]=v.toLowerCase().split(/\s+/);
+if(k==='theme'){TH[a]?(R.style.setProperty('--a',TH[a]),pr('Aksen diganti ke '+a+'.')):pr('Pilih: pink, biru, hijau, atau oranye.')}
+else if(H_[k]){const r=H_[k]();if(r)pr(r)}else pr('Perintah tidak dikenal: '+k+'. Ketik help.')});
+
+/* kontak */
+$('#copy').onclick=e=>{(navigator.clipboard?navigator.clipboard.writeText(EMAIL):Promise.reject()).then(()=>toast('Email disalin'),()=>toast('Email: '+EMAIL));burst(e.clientX,e.clientY,20)};
+$('#send').onclick=e=>{const m=$('#msg').value.trim();if(!m){toast('Tulis pesanmu dulu ya');$('#msg').focus();return}burst(e.clientX,e.clientY,70);location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Halo dari portofolio')+'&body='+encodeURIComponent(m)};
+
+/* scroll: progres, nav aktif, hitung angka */
+addEventListener('scroll',()=>{const d=document.documentElement;$('#prog').style.width=(scrollY/(d.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+const links=$$('#dock a');
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.45}).observe&&$$('section').forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.45}).observe(s));
+$$('[data-n]').forEach(el=>new IntersectionObserver((es,o)=>{if(!es[0].isIntersecting)return;o.disconnect();const n=+el.dataset.n,t0=performance.now();(function s(t){const p=Math.min(1,(t-t0)/1400);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s)})(t0)}).observe(el));
+new IntersectionObserver((es,o)=>{if(!es[0].isIntersecting)return;o.disconnect();$$('.bar i').forEach((i,k)=>setTimeout(()=>i.style.width=i.dataset.w+'%',k*120))},{threshold:.3}).observe(sk);
+</script>
+</body>
+</html>
